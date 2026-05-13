@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "build": "bun build.js",
+        "deploy": "bash deploy.sh"
+    }
+}

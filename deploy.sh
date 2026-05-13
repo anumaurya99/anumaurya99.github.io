@@ -1,0 +1,30 @@
+#!/bin/bash
+set -e
+
+# Build
+bun run build.js
+
+# Copy dist to a temp location outside the repo
+TMPDIR=$(mktemp -d)
+cp -r dist/* "$TMPDIR/"
+
+CURRENT=$(git branch --show-current)
+
+# Switch to main and wipe it
+git checkout main
+git rm -rf .
+
+# Bring in the built files
+cp "$TMPDIR"/* .
+rm -rf "$TMPDIR"
+
+# Commit and force push with single orphan commit
+git checkout --orphan temp
+git add .
+git commit -m "deploy: $(date '+%Y-%m-%d %H:%M')"
+git branch -D main
+git branch -m main
+git push origin main --force
+
+git checkout "$CURRENT"
+echo "Deployed."
