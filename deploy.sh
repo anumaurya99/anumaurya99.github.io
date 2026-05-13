@@ -19,6 +19,7 @@ rm -rf node_modules .gitignore dist build.js deploy.sh bun.lock package.json src
 
 # Bring in the built files
 cp -r "$TMPDIR"/* .
+cp LICENSE "$TMPDIR/"
 rm -rf "$TMPDIR"
 
 # Commit and force push with single orphan commit
