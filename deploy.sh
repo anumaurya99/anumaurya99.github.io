@@ -7,6 +7,7 @@ bun run build.js
 # Copy dist to a temp location outside the repo
 TMPDIR=$(mktemp -d)
 cp -r dist/* "$TMPDIR/"
+cp LICENSE "$TMPDIR/"
 
 CURRENT=$(git branch --show-current)
 
@@ -19,7 +20,6 @@ rm -rf node_modules .gitignore dist build.js deploy.sh bun.lock package.json src
 
 # Bring in the built files
 cp -r "$TMPDIR"/* .
-cp LICENSE "$TMPDIR/"
 rm -rf "$TMPDIR"
 
 # Commit and force push with single orphan commit
