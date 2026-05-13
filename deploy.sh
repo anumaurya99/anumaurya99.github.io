@@ -8,6 +8,7 @@ bun run build.js
 TMPDIR=$(mktemp -d)
 cp -r dist/* "$TMPDIR/"
 cp LICENSE "$TMPDIR/"
+echo "www.wechitracreativehouse.in" > "$TMPDIR/CNAME"
 
 CURRENT=$(git branch --show-current)
 
