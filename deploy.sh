@@ -14,6 +14,9 @@ CURRENT=$(git branch --show-current)
 git checkout main
 git rm -rf .
 
+# Remove untracked leftovers (node_modules etc)
+rm -rf node_modules .gitignore dist build.js deploy.sh bun.lock package.json src
+
 # Bring in the built files
 cp "$TMPDIR"/* .
 rm -rf "$TMPDIR"
