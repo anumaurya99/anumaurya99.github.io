@@ -1,8 +1,10 @@
 import { minify } from "html-minifier-terser";
 import { transform } from "lightningcss";
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
+import { cpSync } from "fs";
 
 mkdirSync("./dist", { recursive: true });
+cpSync("./src/media", "./dist/media", { recursive: true });
 
 // Minify JS
 await Bun.build({
