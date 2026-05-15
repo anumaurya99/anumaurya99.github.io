@@ -21,7 +21,7 @@
     --text-2xl: 2.369rem;
     --text-3xl: 3.157rem;
 
-    --display-size: clamp(3rem, 6.25vw, 7rem);
+    --display-size: clamp(3rem, 6.25vw, 8rem);
 
     --text-stroke: clamp(1px, calc(0.75px + (100vw - 320px) / 448), 2.25px) var(--fg);
 
