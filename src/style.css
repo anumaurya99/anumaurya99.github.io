@@ -210,7 +210,7 @@ nav {
         margin: 0 auto;
         padding: 0 var(--g);
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 3fr 2fr;
         align-items: center;
 
         & .hero-text {
@@ -723,6 +723,11 @@ nav {
     position: relative;
     overflow: hidden;
 
+    img {
+        height: calc(var(--display-size) + 0.1rem);
+        width: auto;
+    }
+
     &::before {
         content: '';
         position: absolute;
@@ -737,7 +742,6 @@ nav {
         line-height: .88;
         letter-spacing: .03em;
         color: var(--fg);
-        margin-bottom: 44px;
 
         & .str {
             -webkit-text-stroke: var(--text-stroke);
