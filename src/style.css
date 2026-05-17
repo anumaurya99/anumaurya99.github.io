@@ -783,15 +783,16 @@ nav {
 /* ─── FOOTER ────────────────────────────────────────────── */
 footer {
     border-top: 1px solid var(--bdr);
-    padding: 40px var(--g);
+    /* padding: 40px var(--g); */
+    padding: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: var(--text-xs);
 
     & .foot-copy,
     & .foot-links a {
         font-family: var(--font-mono);
-        font-size: var(--text-sm);
         letter-spacing: .15em;
         text-transform: uppercase;
         color: var(--muted);
