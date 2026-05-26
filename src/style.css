@@ -4,7 +4,6 @@
     --bg2: #FFFBCD;
     --fg: #000;
     --accent: #F6B23B;
-    --accent2: #e6a82a;
     --muted: rgba(0, 0, 0, .5);
     --bdr: rgba(246, 178, 59, .3);
 
@@ -154,7 +153,40 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--bg);
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    mix-blend-mode: difference;
+
+    & img {
+        filter: invert(1);
+    }
+
+    &.scrolled img {
+        filter: none;
+    }
+
+    &.scrolled {
+        background: color-mix(in srgb, var(--bg) 80%, transparent);
+        backdrop-filter: blur(10px);
+        mix-blend-mode: normal;
+
+        & .nav-links a {
+            color: var(--muted);
+
+            &:hover {
+                color: var(--accent);
+            }
+        }
+
+        & .nav-btn {
+            color: var(--accent);
+            border-color: var(--bdr);
+
+            &:hover {
+                background: var(--accent);
+                color: var(--bg);
+            }
+        }
+    }
 
     & .nav-links {
         display: flex;
@@ -162,7 +194,7 @@ nav {
         list-style: none;
 
         & a {
-            color: var(--muted);
+            color: #fff;
             transition: color .25s;
 
             &:hover {
@@ -173,7 +205,8 @@ nav {
 
     & .nav-btn {
         letter-spacing: .18em;
-        color: var(--accent);
+        /* color: var(--accent); */
+        color: #fff;
         border: 1px solid var(--bdr);
         padding: 9px 18px;
         transition: background .25s, color .25s;
@@ -193,6 +226,16 @@ nav {
     align-items: center;
     position: relative;
     overflow: hidden;
+
+    video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -10;
+    }
 
     & #studio-canvas {
         position: absolute;
@@ -296,7 +339,7 @@ nav {
             font-size: var(--text-xs);
             letter-spacing: .3em;
             text-transform: uppercase;
-            color: var(--muted);
+            color: var(--accent);
             writing-mode: vertical-rl;
         }
 
@@ -317,7 +360,7 @@ nav {
     transition: background .25s;
 
     &:hover {
-        background: var(--accent2);
+        background: var(--accent);
     }
 }
 
@@ -525,7 +568,7 @@ nav {
                 }
 
                 & .srv-name {
-                    color: var(--accent2);
+                    color: var(--accent);
                 }
 
                 & .tag {
