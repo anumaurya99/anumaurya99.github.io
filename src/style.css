@@ -8,9 +8,10 @@
     --bdr: rgba(246, 178, 59, .3);
 
     --font-display: 'Bodoni Moda', sans-serif;
-    --font-body: 'Syne', sans-serif;
-    --font-mono: 'DM Mono', monospace;
+    --font-body: sans-serif;
+    --font-mono: monospace;
 
+    --text-xxs: 0.625rem;
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
     --text-base: 1rem;
@@ -21,7 +22,6 @@
     --text-3xl: 3.157rem;
 
     --display-size: clamp(3rem, 6.25vw, 8rem);
-    --display-size-xl: clamp(6rem, 6.25vw, 16rem);
 
     --text-stroke: clamp(1px, calc(0.75px + (100vw - 320px) / 448), 2.25px) var(--fg);
 
@@ -233,44 +233,39 @@ nav {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        min-width: 100%;
-        min-height: 100%;
         z-index: -10;
+    }
+
+    & .hero-eye {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        font-weight: medium;
+        letter-spacing: .28em;
+        text-transform: uppercase;
+        color: var(--accent);
+        opacity: 0;
+        animation: up .8s .2s forwards;
     }
 
     & .hero-inner {
         margin: 0 auto;
+        margin-top: 26rem;
         text-align: center;
 
         & .hero-text {
             pointer-events: none;
         }
 
-        & .hero-eye {
-            font-family: var(--font-mono);
-            font-size: var(--text-xs);
-            letter-spacing: .28em;
-            text-transform: uppercase;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            margin-bottom: 28px;
-            opacity: 0;
-            animation: up .8s .2s forwards;
-
-            &::before {
-                content: '';
-                width: 32px;
-                height: 1px;
-                background: var(--accent);
-            }
-        }
 
         & .hero-h1 {
+            --title-size: clamp(2.5rem, 6.25vw, 5rem);
+
             font-family: var(--font-display);
-            font-size: var(--display-size);
+            font-size: var(--title-size);
             line-height: .9;
             letter-spacing: .03em;
             color: var(--fg);
@@ -284,7 +279,7 @@ nav {
 
             & .gld {
                 color: var(--accent);
-                font-size: var(--display-size-xl);
+                font-size: calc(var(--title-size) + 1rem);
             }
         }
 
@@ -313,7 +308,7 @@ nav {
 
     & .scroll-cue {
         position: absolute;
-        bottom: 36px;
+        bottom: 18px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
@@ -992,6 +987,12 @@ footer {
 
     nav {
         padding: 14px var(--g);
+    }
+
+    #hero {
+        & .scroll-cue {
+            display: none;
+        }
     }
 
     #about .stats-row {
