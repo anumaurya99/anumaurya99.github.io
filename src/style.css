@@ -21,6 +21,7 @@
     --text-3xl: 3.157rem;
 
     --display-size: clamp(3rem, 6.25vw, 8rem);
+    --display-size-xl: clamp(6rem, 6.25vw, 16rem);
 
     --text-stroke: clamp(1px, calc(0.75px + (100vw - 320px) / 448), 2.25px) var(--fg);
 
@@ -238,15 +239,8 @@ nav {
     }
 
     & .hero-inner {
-        position: relative;
-        z-index: 10;
-        width: 100%;
-        max-width: var(--max);
         margin: 0 auto;
-        padding: 0 var(--g);
-        display: grid;
-        grid-template-columns: 3fr 2fr;
-        align-items: center;
+        text-align: center;
 
         & .hero-text {
             pointer-events: none;
@@ -260,6 +254,7 @@ nav {
             color: var(--accent);
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 14px;
             margin-bottom: 28px;
             opacity: 0;
@@ -289,10 +284,12 @@ nav {
 
             & .gld {
                 color: var(--accent);
+                font-size: var(--display-size-xl);
             }
         }
 
         & .hero-sub {
+            display: inline-block;
             margin-top: 28px;
             font-size: var(--text-md);
             line-height: 1.75;
@@ -306,6 +303,7 @@ nav {
             margin-top: 44px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 28px;
             opacity: 0;
             animation: up .8s .8s forwards;
@@ -364,7 +362,7 @@ nav {
     transition: color .25s;
 
     &:hover {
-        color: var(--fg);
+        color: var(--accent);
 
         & .arr {
             width: 44px;
