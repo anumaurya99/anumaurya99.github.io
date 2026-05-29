@@ -23,8 +23,16 @@
     <div id="ring"></div>
 
     <!-- NAV -->
+    <div class="nav-blur">
+        <div class="nb-inner">
+            <div class="nb-layer nb-1"></div>
+            <div class="nb-layer nb-2"></div>
+            <div class="nb-layer nb-3"></div>
+            <div class="nb-layer nb-4"></div>
+            <div class="nb-layer nb-5"></div>
+        </div>
+    </div>
     <nav id="nav">
-        <!-- <a href="#" class="logo">WE<em>CHITRA</em></a> -->
         <img src="./media/wechitra.webp" height="48px" />
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
@@ -32,7 +40,7 @@
             <li><a href="#work">Work</a></li>
             <li><a href="#process">Process</a></li>
         </ul>
-        <a href="https://linktr.ee/wechitracreativehouse" class="nav-btn">Get WeChitra</a>
+        <a href="#contact" class="nav-btn">Get WeChitra</a>
     </nav>
 
     <!-- HERO -->
@@ -43,7 +51,7 @@
             <!-- <source src="./media/1080p_trailer.mp4" type="video/mp4" media="(min-width: 1280px)" /> -->
             <!-- <source src="./media/720p_trailer.mp4" type="video/mp4" media="(min-width: 1024px)" /> -->
             <!-- <source src="./media/512p_trailer.mp4" type="video/mp4" /> -->
-            <source src="./media/hero.mp4" type="video/mp4" />
+            <!-- <source src="./media/hero.mp4" type="video/mp4" /> -->
         </video>
         <span class="hero-eye">
             Visual Storytellers
@@ -327,14 +335,65 @@
 
 
     <!-- CTA -->
-    <section id="cta">
-        <p class="cta-l reveal">— Ready to create?</p>
-        <h2 class="cta-h reveal">LET'S<br><span class="str">MAKE</span><br>SOMETHING<br></h2>
-        <img src="./media/wechitra.webp" />
-        <br>
-        <a href="mailto:wechitracreativehouse@gmail.com" class="cta-mail reveal">wechitracreativehouse@gmail.com</a>
-        <br><br>
-        <a href="https://linktr.ee/wechitracreativehouse" class="cta-btn reveal">Get WeChitra</a>
+    <section id="contact">
+        <div class="container">
+            <div class="main">
+                <div class="left">
+                    <p class="contact-l reveal">— Ready to create?</p>
+                    <h2 class="contact-h reveal">LET'S<br><span class="str">MAKE</span><br>SOMETHING<br></h2>
+                    <img src="./media/wechitra.webp" />
+                    <ul>
+                        <!-- <li> -->
+                        <!--     <a href="mailto:wechitracreativehouse@gmail.com" class="contact-mail reveal"> -->
+                        <!--         <img src="./media/mail.svg" /> -->
+                        <!--     </a> -->
+                        <!-- </li> -->
+                        <li>
+                            <a href="https://www.instagram.com/wechitra._" target="_blank">
+                                <img src="./media/instagram.svg" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://api.whatsapp.com/send/?phone=919274788955&text&type=phone_number&app_absent=0"
+                                target="_blank">
+                                <img src="./media/whatsapp.svg" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/people/We-Chitra-Creative-House/61589114521850/"
+                                target="_blank">
+                                <img src="./media/facebook.svg" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/@we_chitra" target="_blank">
+                                <img src="./media/youtube.svg" />
+                            </a>
+                        </li>
+                        <li><a href="https://www.pinterest.com/wechitracreativehouse/?invite_code=64a471cf6d2245ecac5682ba30573ab5&sender=1101482158771859962"
+                                target="_blank">
+                                <img src="./media/pintrest.svg" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://in.linkedin.com/in/we-चित्र-969278404" target="_blank">
+                                <img src="./media/linkedin.svg" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <span>To: wechitracreativehouse@gmail.com</span>
+                    <input type="text" id="subject" placeholder="Subject" />
+                    <textarea id="body" placeholder="Message"></textarea>
+                    <button onclick="sendMail()">Send</button>
+                </div>
+            </div>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5487.469748103254!2d72.5390556!3d23.0582654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e85c3f5190e53%3A0x4b115c9a47c40689!2sWechitra%20Creative%20House!5e1!3m2!1sen!2sca!4v1779932071282!5m2!1sen!2sca"
+                width="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </section>
 
     <!-- FOOTER -->
@@ -342,9 +401,36 @@
         <img src="./media/wechitra.webp" width="6%" />
         <p class="foot-copy">© 2026 WeChitra. All rights reserved.</p>
         <ul class="foot-links">
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">Vimeo</a></li>
-            <li><a href="#">LinkedIn</a></li>
+            <li>
+                <a href="https://www.instagram.com/wechitra._">
+                    <img src="./media/instagram.svg" width="18px" />
+                </a>
+            </li>
+            <li>
+                <a href="https://api.whatsapp.com/send/?phone=919274788955&text&type=phone_number&app_absent=0">
+                    <img src="./media/whatsapp.svg" width="18px" />
+                </a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/people/We-Chitra-Creative-House/61589114521850/">
+                    <img src="./media/facebook.svg" width="18px" />
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/@we_chitra">
+                    <img src="./media/youtube.svg" width="18px" />
+                </a>
+            </li>
+            <li><a
+                    href="https://www.pinterest.com/wechitracreativehouse/?invite_code=64a471cf6d2245ecac5682ba30573ab5&sender=1101482158771859962">
+                    <img src="./media/pintrest.svg" width="18px" />
+                </a>
+            </li>
+
+            <li>
+                <a href="https://in.linkedin.com/in/we-चित्र-969278404"><img src="./media/linkedin.svg"
+                        width="18px" /></a>
+            </li>
         </ul>
     </footer>
 
