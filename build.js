@@ -23,13 +23,17 @@ const { code } = transform({
 writeFileSync("./dist/style.css", code);
 
 // Minify HTML
-const html = readFileSync("./src/index.html", "utf8");
-const minified = await minify(html, {
-    collapseWhitespace: true,
-    removeComments: true,
-    minifyCSS: true,
-    minifyJS: true,
-});
-writeFileSync("./dist/index.html", minified);
+const files = ["index.html", "contact.html"]
+
+for (const file of files) {
+    const html = readFileSync("./src/" + file, "utf8");
+    const minified = await minify(html, {
+        collapseWhitespace: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true,
+    });
+    writeFileSync("./dist/" + file, minified);
+}
 
 console.log("Build done.");

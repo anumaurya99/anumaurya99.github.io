@@ -11,7 +11,8 @@
     --font-body: sans-serif;
     --font-mono: monospace;
 
-    --text-xxs: 0.625rem;
+    --text-3xs: 0.5rem;
+    --text-2xs: 0.625rem;
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
     --text-base: 1rem;
@@ -106,10 +107,89 @@ body {
     color: var(--fg);
 }
 
+/* ─── BUTTONS ───────────────────────────────────────────── */
+.btn {
+    --border-and-shadow: var(--primary);
+    --text-color: var(--primary);
+
+    all: unset;
+    display: inline-block;
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border-and-shadow);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 4px 4px 0 0 var(--border-and-shadow);
+    }
+
+    &:active {
+        box-shadow: 4px 4px 0 0 var(--border-and-shadow) inset;
+    }
+}
+
+.btn-f {
+    --border-and-shadow: var(--accent);
+    --text-color: var(--accent);
+    padding: 14px 28px;
+
+    &:hover {
+        --border-and-shadow: var(--secondary);
+        --text-color: var(--secondary);
+    }
+}
+
+.btn-g {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color .25s;
+
+    &:hover {
+        color: var(--accent);
+
+        & .arr {
+            width: 44px;
+        }
+    }
+
+    & .arr {
+        width: 28px;
+        height: 1px;
+        background: currentColor;
+        position: relative;
+        transition: width .25s;
+
+        &::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 6px;
+            height: 6px;
+            border-right: 1px solid currentColor;
+            border-top: 1px solid currentColor;
+            transform: rotate(45deg);
+        }
+    }
+}
+
+
 /* ─── NAV ───────────────────────────────────────────────── */
 .nav-blur {
     --layers: 5;
-    --height: 80px;
+    --height: 100px;
     --max-blur: 1rem;
 
     position: fixed;
@@ -177,15 +257,7 @@ body {
             transparent var(--end));
 }
 
-nav {
-    position: fixed;
-    inset: 0 0 auto;
-    z-index: 100;
-    padding: 13px var(--g);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+.nav-invert {
     mix-blend-mode: difference;
 
     & img {
@@ -193,8 +265,6 @@ nav {
     }
 
     &.scrolled {
-        /* background: color-mix(in srgb, var(--bg) 80%, transparent); */
-        /* backdrop-filter: blur(1rem); */
         mix-blend-mode: normal;
 
         & img {
@@ -210,15 +280,32 @@ nav {
         }
 
         & .nav-btn {
-            color: var(--accent);
-            border-color: var(--bdr);
-
-            &:hover {
-                background: var(--accent);
-                color: var(--primary);
-            }
+            --text-color: var(--accent);
+            --border-and-shadow: var(--bdr);
         }
     }
+
+    & ul {
+        & a {
+            color: #fff;
+        }
+    }
+
+    .nav-btn {
+        --text-color: #fff;
+    }
+
+}
+
+nav {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 100;
+    padding: 13px var(--g);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
 
     & ul {
         display: flex;
@@ -231,7 +318,7 @@ nav {
             letter-spacing: .2em;
             text-transform: uppercase;
             text-decoration: none;
-            color: #fff;
+            color: var(--fg);
             transition: color .25s;
 
             &:hover {
@@ -240,21 +327,10 @@ nav {
         }
     }
 
-    & .nav-btn {
-        font-family: var(--font-mono);
-        font-size: var(--text-xs);
-        letter-spacing: .18em;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #fff;
-        border: 1px solid var(--bdr);
+    .nav-btn {
+        --border-and-shadow: var(--accent);
+        --text-color: var(--accent);
         padding: 9px 18px;
-        transition: background .25s, color .25s;
-
-        &:hover {
-            background: var(--accent);
-            color: var(--primary);
-        }
     }
 }
 
@@ -353,7 +429,7 @@ nav {
 
         & span {
             font-family: var(--font-mono);
-            font-size: var(--text-xxs);
+            font-size: var(--text-3xs);
             letter-spacing: .3em;
             text-transform: uppercase;
             color: var(--accent);
@@ -365,60 +441,6 @@ nav {
             height: 52px;
             background: linear-gradient(to bottom, var(--accent), transparent);
             animation: pulse 2s ease-in-out infinite;
-        }
-    }
-}
-
-/* ─── BUTTONS ───────────────────────────────────────────── */
-.btn-f {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: var(--accent);
-    color: var(--primary);
-    padding: 14px 28px;
-    transition: background .25s;
-}
-
-.btn-g {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: color .25s;
-
-    &:hover {
-        color: var(--accent);
-
-        & .arr {
-            width: 44px;
-        }
-    }
-
-    & .arr {
-        width: 28px;
-        height: 1px;
-        background: currentColor;
-        position: relative;
-        transition: width .25s;
-
-        &::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: -3px;
-            width: 6px;
-            height: 6px;
-            border-right: 1px solid currentColor;
-            border-top: 1px solid currentColor;
-            transform: rotate(45deg);
         }
     }
 }
@@ -791,14 +813,10 @@ nav {
     --gap: 2rem;
 
     background: var(--secondary);
-    padding: calc(var(--gap) * 6) 0;
+    padding: calc(var(--gap) * 7) 0;
     text-align: center;
     position: relative;
     overflow: hidden;
-
-    & img {
-        height: calc(var(--display-size) + 0.1rem);
-    }
 
     & .contact-l {
         font-family: var(--font-mono);
@@ -811,7 +829,7 @@ nav {
 
     & .contact-h {
         font-family: var(--font-display);
-        font-size: calc(var(--display-size) + 2rem);
+        font-size: calc(var(--display-size) + 0.5rem);
         line-height: .88;
         letter-spacing: .03em;
         color: var(--fg);
@@ -822,6 +840,22 @@ nav {
         }
     }
 
+    & .wechitra-img {
+        display: inline-block;
+        height: calc(var(--display-size) + 0.1rem);
+    }
+
+    & .contact-btn {
+        display: block;
+        max-width: 300px;
+        padding: 1rem;
+        margin: 2rem auto 4rem auto;
+        font-size: var(--text-lg);
+    }
+
+    & iframe {
+        width: 50%;
+    }
 
     & .container {
         width: 100%;
@@ -831,10 +865,15 @@ nav {
 
         & .main {
             display: flex;
-            width: 100%;
+            padding-bottom: var(--gap);
+            gap: calc(var(--gap)* 2);
 
             & .left {
                 flex: 1;
+
+                & .text {
+                    padding-bottom: var(--gap);
+                }
 
                 & ul {
                     list-style: none;
@@ -842,28 +881,17 @@ nav {
                     flex-direction: row;
                     align-items: center;
                     gap: var(--gap);
-                    padding: var(--gap) 0;
 
                     & li {
                         flex: 1;
-                        border: 1px solid var(--primary);
-                        transition: all 0.2s ease-in-out;
-
-                        &:hover {
-                            box-shadow: 4px 4px 0 0 var(--primary);
-                        }
-
-                        &:active {
-                            box-shadow: 4px 4px 0 0 var(--primary) inset;
-                        }
 
                         & a {
                             display: block;
                             line-height: 0;
-                            /* padding: var(--gap) 0; */
+                            padding: var(--gap);
 
-                            & img {
-                                width: 35%;
+                            & .social {
+                                width: 2.5rem;
                             }
                         }
                     }
@@ -875,10 +903,21 @@ nav {
                 flex: 1;
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
                 gap: var(--gap);
+
+                & input,
+                textarea,
+                button {
+                    padding: calc(var(--gap) / 4) calc(var(--gap) / 2);
+                }
             }
         }
 
+        & iframe {
+            height: 25rem;
+            width: 100%;
+        }
     }
 }
 
@@ -891,6 +930,10 @@ footer {
     justify-content: space-between;
     font-size: var(--text-xs);
 
+    & img {
+        width: 6%;
+    }
+
     & p,
     & ul a {
         font-family: var(--font-mono);
@@ -901,9 +944,15 @@ footer {
 
     & ul {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 28px;
         list-style: none;
+        font-size: var(--text-2xs);
+
+        & li {
+            flex: 1;
+        }
 
         & a {
             text-decoration: none;
@@ -990,8 +1039,7 @@ footer {
     nav {
         padding: 16px var(--g);
 
-        & ul,
-        & .nav-btn {
+        & ul {
             display: none;
         }
     }
@@ -1028,10 +1076,20 @@ footer {
         }
     }
 
+    #contact {
+        & iframe {
+            width: 80%;
+        }
+    }
+
     footer {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+
+        & img {
+            width: 12%;
+        }
     }
 }
 
@@ -1105,7 +1163,11 @@ footer {
     }
 
     #contact {
-        padding: 100px 0;
+        /* padding: 8rem 0; */
+
+        & iframe {
+            width: 90%;
+        }
 
         & .contact-mail {
             word-break: break-all;
@@ -1113,6 +1175,12 @@ footer {
 
         & .container {
             flex-direction: column;
+        }
+    }
+
+    & footer {
+        & img {
+            width: 20%;
         }
     }
 }

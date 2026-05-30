@@ -5,7 +5,6 @@
 const cur = document.getElementById('cur');
 const ring = document.getElementById('ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
-
 document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
 (function loop() {
@@ -63,6 +62,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 function sendMail() {
     const subject = encodeURIComponent(document.getElementById('subject').value);
     const body = encodeURIComponent(document.getElementById('body').value);
-    
+
     window.location.href = `mailto:wechitracreativehouse@gmail.com?subject=${subject}&body=${body}`;
 }
