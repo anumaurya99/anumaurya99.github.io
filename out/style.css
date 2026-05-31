@@ -813,10 +813,10 @@ nav {
     --gap: 2rem;
 
     background: var(--secondary);
-    padding: calc(var(--gap) * 7) 0;
     text-align: center;
     position: relative;
     overflow: hidden;
+    padding: calc(var(--gap) * 7.5) 0;
 
     & .contact-l {
         font-family: var(--font-mono);
@@ -855,6 +855,10 @@ nav {
 
     & iframe {
         width: 50%;
+    }
+
+    &.page {
+        padding: calc(var(--gap) * 3.4) 0;
     }
 
     & .container {
@@ -915,7 +919,7 @@ nav {
         }
 
         & iframe {
-            height: 25rem;
+            height: 20rem;
             width: 100%;
         }
     }

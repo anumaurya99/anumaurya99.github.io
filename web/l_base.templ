@@ -1,0 +1,92 @@
+package web
+
+templ base_layout() {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link rel="icon" type="image/svg+xml" href="./media/favicon.svg"/>
+			<title>WECHITRA — Visual Storytellers</title>
+			<link rel="preconnect" href="https://fonts.googleapis.com"/>
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+			<link
+				href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+				rel="stylesheet"
+			/>
+			<link rel="preconnect" href="https://fonts.googleapis.com"/>
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+			<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet"/>
+			<link rel="stylesheet" href="style.css"/>
+		</head>
+		<body>
+			<div id="cur"></div>
+			<div id="ring"></div>
+
+			<!-- NAV -->
+			<div class="nav-blur">
+				<div class="nb-inner">
+					<div class="nb-layer nb-1"></div>
+					<div class="nb-layer nb-2"></div>
+					<div class="nb-layer nb-3"></div>
+					<div class="nb-layer nb-4"></div>
+					<div class="nb-layer nb-5"></div>
+				</div>
+			</div>
+			<nav id="nav" class="nav-invert">
+				<a href="/"><img src="./media/wechitra.webp" height="48px"/></a>
+				<ul>
+					<li><a href="/#about">About</a></li>
+					<li><a href="/#services">Services</a></li>
+					<li><a href="/#work">Work</a></li>
+					<li><a href="/#process">Process</a></li>
+					<li><a href="/#contact">Contact</a></li>
+				</ul>
+				<a href="contact.html" class="btn nav-btn">Get WeChitra</a>
+			</nav>
+
+            {children...}
+
+			<!-- FOOTER -->
+			<footer>
+				<img src="./media/wechitra.webp"/>
+				<p class="foot-copy">© 2026 WeChitra. All rights reserved.</p>
+				<ul>
+					<li>
+						<a href="https://www.instagram.com/wechitra._">
+							Instagram
+						</a>
+					</li>
+					<li>
+						<a href="https://api.whatsapp.com/send/?phone=919274788955&text&type=phone_number&app_absent=0">
+							Whatsapp
+						</a>
+					</li>
+					<li>
+						<a href="https://www.facebook.com/people/We-Chitra-Creative-House/61589114521850/">
+							Facebook
+						</a>
+					</li>
+					<li>
+						<a href="https://www.youtube.com/@we_chitra">
+							Youtube
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://www.pinterest.com/wechitracreativehouse/?invite_code=64a471cf6d2245ecac5682ba30573ab5&sender=1101482158771859962"
+						>
+							Pintrest
+						</a>
+					</li>
+					<li>
+						<a href="https://in.linkedin.com/in/we-चित्र-969278404">
+							LinkedIn
+						</a>
+					</li>
+				</ul>
+			</footer>
+			<script src="script.js"></script>
+		</body>
+	</html>
+}

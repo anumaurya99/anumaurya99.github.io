@@ -2,7 +2,7 @@
     "scripts": {
         "build": "bun build.js",
         "deploy": "bash deploy.sh",
-        "dev": "bunx live-server src/ --no-browser --open='/'  --entry-file='index.html'"
+        "dev": "bunx live-server out/ --no-browser --open='/'  --entry-file='index.html'"
     },
     "devDependencies": {
         "html-minifier-terser": "^7.2.0",
