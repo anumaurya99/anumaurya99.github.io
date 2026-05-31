@@ -38,7 +38,7 @@ document.querySelectorAll('a, .srv-card, .wi').forEach(el => {
 
 const nav = document.getElementById("nav")
 window.addEventListener("scroll", () => {
-    nav.classList.toggle("scrolled", window.scrollY > 2)
+    nav.classList.toggle("scrolled", window.scrollY > 36)
 })
 
 // ╭──────────────────╮
