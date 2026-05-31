@@ -17,7 +17,7 @@ git checkout main
 git rm -rf .
 
 # Remove untracked leftovers (node_modules etc)
-rm -rf node_modules .gitignore dist build.js deploy.sh bun.lock package.json src
+rm -rf node_modules .gitignore dist build.js deploy.sh bun.lock package.json src out tmp web
 
 # Bring in the built files
 cp -r "$TMPDIR"/* .

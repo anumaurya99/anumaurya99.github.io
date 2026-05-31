@@ -188,12 +188,13 @@ body {
 
 /* ─── NAV ───────────────────────────────────────────────── */
 .nav-blur {
-    --layers: 5;
-    --height: 100px;
+    --layers: 7;
+    --height: 11rem;
     --max-blur: 1rem;
+    --top: -4rem;
 
     position: fixed;
-    top: -1;
+    top: var(--top);
     left: 0;
     right: 0;
     height: var(--height);
@@ -217,21 +218,23 @@ body {
 .nb-1 {
     --i: 0;
 }
-
 .nb-2 {
     --i: 1;
 }
-
 .nb-3 {
     --i: 2;
 }
-
 .nb-4 {
     --i: 3;
 }
-
 .nb-5 {
     --i: 4;
+}
+.nb-5 {
+    --i: 5;
+}
+.nb-5 {
+    --i: 6;
 }
 
 .nb-layer {
