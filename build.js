@@ -8,7 +8,7 @@ cpSync("./out/media", "./dist/media", { recursive: true });
 
 // Minify JS
 await Bun.build({
-    entrypoints: ["./out/script.js"],
+    entrypoints: ["./out/index.js"],
     outdir: "./dist",
     minify: true,
 });
