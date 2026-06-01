@@ -8,34 +8,60 @@ templ base_layout() {
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<link rel="icon" type="image/svg+xml" href="./media/favicon.svg"/>
 			<title>WECHITRA — Visual Storytellers</title>
+
+			<!-- Fonts: single preconnect pair, both families in one request -->
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 			<link
+				rel="preload"
+				as="style"
 				href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
-				rel="stylesheet"
+				onload="this.onload=null;this.rel='stylesheet'"
 			/>
-			<link rel="preconnect" href="https://fonts.googleapis.com"/>
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-			<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet"/>
+			<noscript>
+				<link
+					href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+					rel="stylesheet"
+				/>
+			</noscript>
+
+			<!-- Inline critical CSS: above-the-fold nav + hero only -->
+			<style>
+				:root{--fg:#000;--primary:#8C2312;--secondary:#FFFBCD;--accent:#F6B23B;--muted:rgba(0,0,0,.5);--bdr:rgba(246,178,59,.3);--font-display:'Bodoni Moda',sans-serif;--font-body:sans-serif;--font-mono:monospace;--text-3xs:.5rem;--text-2xs:.625rem;--text-xs:.75rem;--text-sm:.875rem;--text-base:1rem;--text-md:1.125rem;--text-lg:1.333rem;--text-xl:1.777rem;--text-2xl:2.369rem;--text-3xl:3.157rem;--display-size:clamp(2.5rem,6.25vw,5rem);--text-stroke:clamp(1px,calc(0.75px + (100vw - 320px)/448),2.25px) var(--fg);--g:48px;--max:1400px}
+				*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+				html{font-size:16px;scroll-behavior:smooth}
+				body{background:var(--primary);color:var(--fg);font-family:var(--font-body);overflow-x:hidden;cursor:none}
+				#cur,#ring{position:fixed;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%)}
+				#cur{width:7px;height:7px;background:var(--accent);z-index:9999;transition:width .25s,height .25s}
+				#ring{width:34px;height:34px;border:1px solid rgba(246,178,59,.4);z-index:9998;transition:width .3s,height .3s}
+				.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
+				nav{position:fixed;inset:0 0 auto;z-index:100;padding:13px var(--g);display:flex;align-items:center;justify-content:space-between;transition:background .3s ease,backdrop-filter .3s ease}
+				#hero{height:100vh;min-height:680px;display:flex;align-items:center;position:relative;overflow:hidden}
+			</style>
+
 			<link rel="stylesheet" href="style.css"/>
 		</head>
 		<body>
 			<div id="cur"></div>
 			<div id="ring"></div>
 
-			<!-- NAV -->
-			<!-- <div class="nav-blur"> -->
-			<!-- 	<div class="nb-inner"> -->
-			<!-- 		<div class="nb-layer nb-1"></div> -->
-			<!-- 		<div class="nb-layer nb-2"></div> -->
-			<!-- 		<div class="nb-layer nb-3"></div> -->
-			<!-- 		<div class="nb-layer nb-4"></div> -->
-			<!-- 		<div class="nb-layer nb-5"></div> -->
-			<!-- 		<div class="nb-layer nb-6"></div> -->
-			<!-- 	</div> -->
-			<!-- </div> -->
+			<!-- NAV blur layers -->
+			<div class="nav-blur">
+				<div class="nb-inner">
+					<div class="nb-layer nb-1"></div>
+					<div class="nb-layer nb-2"></div>
+					<div class="nb-layer nb-3"></div>
+					<div class="nb-layer nb-4"></div>
+					<div class="nb-layer nb-5"></div>
+					<div class="nb-layer nb-6"></div>
+					<div class="nb-layer nb-7"></div>
+					<div class="nb-layer nb-8"></div>
+					<div class="nb-layer nb-9"></div>
+					<div class="nb-layer nb-10"></div>
+				</div>
+			</div>
 			<nav id="nav" class="nav-invert">
-				<a href="/"><img src="./media/wechitra.webp" height="48px"/></a>
+				<a href="/"><img src="./media/wechitra.webp" alt="Wechitra" width="120" height="48" fetchpriority="high"/></a>
 				<ul>
 					<li><a href="/#about">About</a></li>
 					<li><a href="/#services">Services</a></li>
@@ -46,48 +72,22 @@ templ base_layout() {
 				<a href="contact.html" class="btn nav-btn">Get WeChitra</a>
 			</nav>
 
-            {children...}
+			{children...}
 
 			<!-- FOOTER -->
 			<footer>
-				<img src="./media/wechitra.webp"/>
-				<p class="foot-copy">© 2026 WeChitra. All rights reserved.</p>
+				<img src="./media/wechitra.webp" alt="Wechitra" width="80" height="32" loading="lazy"/>
+				<p>© 2026 WeChitra. All rights reserved.</p>
 				<ul>
-					<li>
-						<a href="https://www.instagram.com/wechitra._">
-							Instagram
-						</a>
-					</li>
-					<li>
-						<a href="https://api.whatsapp.com/send/?phone=919274788955&text&type=phone_number&app_absent=0">
-							Whatsapp
-						</a>
-					</li>
-					<li>
-						<a href="https://www.facebook.com/people/We-Chitra-Creative-House/61589114521850/">
-							Facebook
-						</a>
-					</li>
-					<li>
-						<a href="https://www.youtube.com/@we_chitra">
-							Youtube
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://www.pinterest.com/wechitracreativehouse/?invite_code=64a471cf6d2245ecac5682ba30573ab5&sender=1101482158771859962"
-						>
-							Pintrest
-						</a>
-					</li>
-					<li>
-						<a href="https://in.linkedin.com/in/we-चित्र-969278404">
-							LinkedIn
-						</a>
-					</li>
+					<li><a href="https://www.instagram.com/wechitra._">Instagram</a></li>
+					<li><a href="https://api.whatsapp.com/send/?phone=919274788955&text&type=phone_number&app_absent=0">Whatsapp</a></li>
+					<li><a href="https://www.facebook.com/people/We-Chitra-Creative-House/61589114521850/">Facebook</a></li>
+					<li><a href="https://www.youtube.com/@we_chitra">Youtube</a></li>
+					<li><a href="https://www.pinterest.com/wechitracreativehouse/?invite_code=64a471cf6d2245ecac5682ba30573ab5&sender=1101482158771859962">Pinterest</a></li>
+					<li><a href="https://in.linkedin.com/in/we-चित्र-969278404">LinkedIn</a></li>
 				</ul>
 			</footer>
-			<script src="script.js"></script>
+			<script defer src="index.js"></script>
 		</body>
 	</html>
 }
