@@ -31,4 +31,5 @@ func generateFile(template templ.Component, path string) {
 func main() {
 	generateFile(web.Index(), "out/index.html")
 	generateFile(web.Contact(), "out/contact.html")
+	generateFile(web.Projects(), "out/projects.html")
 }

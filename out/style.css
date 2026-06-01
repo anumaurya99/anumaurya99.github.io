@@ -331,6 +331,10 @@ nav {
     justify-content: space-between;
     transition: background var(--anim-time) ease, backdrop-filter var(--anim-time) ease;
 
+    & img {
+        height: 2.5rem;
+    }
+
     & ul {
         display: flex;
         gap: 36px;
@@ -355,6 +359,10 @@ nav {
         --border-and-shadow: var(--accent);
         --text-color: var(--accent);
         padding: 9px 18px;
+
+        &:hover {
+            color: var(--accent);
+        }
     }
 }
 

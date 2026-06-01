@@ -38,38 +38,43 @@ document.querySelectorAll('a, .srv-card, .wi').forEach(el => {
 // │ hover auto play │
 // ╰─────────────────╯
 
-for (let child of document.querySelector(".work-grid").children) {
-    const video = child.querySelector("video")
+const heroProjects = document.querySelector(".work-grid");
+window.addEventListener("load", () => {
+    if (heroProjects != null) {
+        for (let child of heroProjects.children) {
+            const video = child.querySelector("video")
 
-    // Desktop: hover to play
-    child.addEventListener('mouseenter', () => {
-        video.classList.remove("bw")
-        video.play()
-    })
-    child.addEventListener('mouseleave', () => {
-        video.pause()
-        video.classList.add("bw")
-    })
-
-    // Mobile: long press to toggle play/pause
-    let pressTimer = null
-    child.addEventListener('touchstart', () => {
-        pressTimer = setTimeout(() => {
-            pressTimer = null
-            if (video.paused) {
+            // Desktop: hover to play
+            child.addEventListener('mouseenter', () => {
                 video.classList.remove("bw")
                 video.play()
-            } else {
+            })
+            child.addEventListener('mouseleave', () => {
                 video.pause()
                 video.classList.add("bw")
+            })
+
+            // Mobile: hold to play, release to pause
+            let holding = false
+            child.addEventListener('touchstart', (e) => {
+                e.preventDefault()           // prevents the 300ms delay & scroll interference
+                holding = true
+                video.classList.remove("bw")
+                video.play()
+            }, { passive: false })          // passive:false needed for preventDefault to work
+
+            const stopHold = () => {
+                if (!holding) return
+                holding = false
+                video.pause()
+                video.currentTime = 0
+                video.classList.add("bw")
             }
-        }, 500)
-    }, { passive: true })
-    const cancelPress = () => { clearTimeout(pressTimer); pressTimer = null }
-    child.addEventListener('touchend', cancelPress)
-    child.addEventListener('touchcancel', cancelPress)
-    child.addEventListener('touchmove', cancelPress)
-}
+            child.addEventListener('touchend', stopHold)
+            child.addEventListener('touchcancel', stopHold)
+        }
+    }
+})
 
 // ╭────────────╮
 // │ Nav Scroll │
