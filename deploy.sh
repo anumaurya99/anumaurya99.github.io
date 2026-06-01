@@ -5,7 +5,7 @@ bun run build.js
 
 # Copy dist to a temp location outside the repo
 TMPDIR=$(mktemp -d)
-rsync -a --exclude='media/' dist/ "$TMPDIR/"
+cp -r dist/* "$TMPDIR/"
 cp LICENSE "$TMPDIR/"
 echo "www.wechitracreativehouse.in" > "$TMPDIR/CNAME"
 CURRENT=$(git branch --show-current)
