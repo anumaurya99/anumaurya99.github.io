@@ -5,7 +5,7 @@ bun run build.js
 
 # Copy dist to a temp location outside the repo
 TMPDIR=$(mktemp -d)
-cp -r dist/* "$TMPDIR/"
+rsync -a --exclude='media/' dist/ "$TMPDIR/"
 cp LICENSE "$TMPDIR/"
 echo "www.wechitracreativehouse.in" > "$TMPDIR/CNAME"
 CURRENT=$(git branch --show-current)
@@ -18,7 +18,7 @@ git rm -rf .
 rm -rf node_modules .gitignore dist build.js deploy.sh bun.lock package.json src out tmp web
 
 # Bring in the built files
-rsync -a --delete --exclude='.git' "$TMPDIR/" .
+rsync -a --delete --exclude='.git' --exclude='media/' "$TMPDIR/" .
 rm -rf "$TMPDIR"
 
 # Commit and force push with single orphan commit
