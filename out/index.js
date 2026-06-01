@@ -4,7 +4,9 @@
 
 const cur = document.getElementById('cur');
 const ring = document.getElementById('ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
+let mx = window.innerWidth / 2;
+let my = window.innerHeight / 2;
+let rx = mx, ry = my;
 document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
 (function loop() {
@@ -38,14 +40,35 @@ document.querySelectorAll('a, .srv-card, .wi').forEach(el => {
 
 for (let child of document.querySelector(".work-grid").children) {
     const video = child.querySelector("video")
+
+    // Desktop: hover to play
     child.addEventListener('mouseenter', () => {
-        video.classList.toggle("bw")
+        video.classList.remove("bw")
         video.play()
     })
     child.addEventListener('mouseleave', () => {
         video.pause()
-        video.classList.toggle("bw")
+        video.classList.add("bw")
     })
+
+    // Mobile: long press to toggle play/pause
+    let pressTimer = null
+    child.addEventListener('touchstart', () => {
+        pressTimer = setTimeout(() => {
+            pressTimer = null
+            if (video.paused) {
+                video.classList.remove("bw")
+                video.play()
+            } else {
+                video.pause()
+                video.classList.add("bw")
+            }
+        }, 500)
+    }, { passive: true })
+    const cancelPress = () => { clearTimeout(pressTimer); pressTimer = null }
+    child.addEventListener('touchend', cancelPress)
+    child.addEventListener('touchcancel', cancelPress)
+    child.addEventListener('touchmove', cancelPress)
 }
 
 // ╭────────────╮
@@ -81,3 +104,4 @@ function sendMail() {
 
     window.location.href = `mailto:wechitracreativehouse@gmail.com?subject=${subject}&body=${body}`;
 }
+
