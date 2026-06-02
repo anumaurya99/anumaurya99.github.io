@@ -7,7 +7,7 @@ type Project struct {
 }
 
 var projects = []Project{
-    {name: "documentry", category: "Documentary — 2026", title: "Vasuba"},
+    {name: "documentary", category: "Documentary — 2026", title: "Vasuba"},
     {name: "corporate", category: "Corporate — 2026", title: "Deendayal Port Authority"},
     {name: "fnb", category: "F&B — 2026", title: "Rustic Roma"},
     {name: "jewellery", category: "Jewellery — 2026", title: "Ratnam Jewellers"},
@@ -26,7 +26,7 @@ templ Index() {
                 preload="none"
                 width="3600" height="1440"
             >
-                <source src="./media/hero.mp4"  type="video/mp4"/>
+                <!-- <source src="./media/hero.mp4"  type="video/mp4"/> -->
             </video>
 
             <span class="hero-eye">Visual Storytellers<br/>— Est. 2026</span>
@@ -233,7 +233,7 @@ templ Index() {
                 <div class="work-grid reveal" style="transition-delay:.1s">
                     for _, project := range projects {
                         <div class="wi">
-                            <video class="bw" loading="lazy" width="100%" height="100%" muted loop playsinline>
+                            <video class="bw" loading="lazy" width="100%" height="100%" poster={"./media/" + project.name + "-poster.webp"} muted loop playsinline>
                                 <source src={ "./media/" + project.name + ".mp4" } type="video/mp4"/>
                             </video>
                             <div class="wi-info">
