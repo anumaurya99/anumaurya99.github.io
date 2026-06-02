@@ -776,6 +776,7 @@ nav {
             & video {
                 z-index: -3;
                 object-fit: cover;
+                aspect-ratio: 5/2.5;
 
                 &.bw {
                     transition: filter var(--anim-time) ease-in-out;
