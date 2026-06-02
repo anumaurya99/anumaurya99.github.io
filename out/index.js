@@ -57,8 +57,9 @@ window.addEventListener("load", () => {
             // Mobile: hold to play, release to pause
             let holding = false
             child.addEventListener('touchstart', (e) => {
-                e.preventDefault()           // prevents the 300ms delay & scroll interference
+                e.preventDefault()
                 holding = true
+
                 video.classList.remove("bw")
                 video.play()
             }, { passive: false })          // passive:false needed for preventDefault to work
@@ -67,7 +68,6 @@ window.addEventListener("load", () => {
                 if (!holding) return
                 holding = false
                 video.pause()
-                video.currentTime = 0
                 video.classList.add("bw")
             }
             child.addEventListener('touchend', stopHold)

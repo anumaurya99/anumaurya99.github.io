@@ -233,7 +233,14 @@ templ Index() {
                 <div class="work-grid reveal" style="transition-delay:.1s">
                     for _, project := range projects {
                         <div class="wi">
-                            <video class="bw" loading="lazy" width="100%" height="100%" poster={"./media/" + project.name + "-poster.webp"} muted loop playsinline>
+                            <video 
+                                class="bw" 
+                                loading="lazy" 
+                                width="100%" 
+                                height="100%" 
+                                poster={"./media/" + project.name + "-poster.webp"} 
+                                muted loop playsinline
+                            >
                                 <source src={ "./media/" + project.name + ".mp4" } type="video/mp4"/>
                             </video>
                             <div class="wi-info">
