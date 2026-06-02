@@ -31,6 +31,14 @@
     --anim-time: .25s;
 }
 
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 /* ─── RESET ─────────────────────────────────────────────── */
 *,
 *::before,
@@ -305,7 +313,7 @@ body {
 
         & .nav-btn {
             --text-color: var(--accent);
-            --border-and-shadow: var(--bdr);
+            --border-and-shadow: var(--accent);
         }
     }
 
@@ -331,8 +339,12 @@ nav {
     justify-content: space-between;
     transition: background var(--anim-time) ease, backdrop-filter var(--anim-time) ease;
 
-    & img {
-        height: 2.5rem;
+    & #nav-logo {
+        height: 3rem;
+    }
+
+    & #nav-logo-btn {
+        height: var(--text-sm);
     }
 
     & ul {
@@ -352,7 +364,10 @@ nav {
             &:hover {
                 color: var(--accent);
             }
+
         }
+
+
     }
 
     .nav-btn {
@@ -799,6 +814,7 @@ nav {
                     text-transform: uppercase;
                     color: var(--accent);
                     margin-bottom: 4px;
+                    display: block;
                 }
 
                 & .wi-title {
@@ -950,10 +966,20 @@ nav {
                     padding-bottom: var(--gap);
                 }
 
+                & input {
+                    all: unset;
+                    background: var(--primary);
+                    color: var(--secondary);
+                    padding: 1rem;
+                    margin-bottom: var(--gap);
+                    font-size: var(--text-lg);
+                }
+
                 & ul {
                     list-style: none;
                     display: flex;
                     flex-direction: row;
+                    flex-wrap: wrap;
                     align-items: center;
                     gap: var(--gap);
 
@@ -1006,7 +1032,7 @@ footer {
     font-size: var(--text-xs);
 
     & img {
-        width: 6%;
+        width: 3%;
     }
 
     & p,
@@ -1088,6 +1114,12 @@ footer {
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 
+@media(max-height: 1000px) {
+    #hero .scroll-cue {
+        display: none;
+    }
+}
+
 /* tablet (601–900px) */
 @media (max-width: 900px) {
     :root {
@@ -1100,6 +1132,10 @@ footer {
 
     body {
         cursor: auto;
+    }
+
+    #hero .scroll-cue {
+        display: none;
     }
 
     #cur,

@@ -61,21 +61,23 @@ templ base_layout() {
 				</div>
 			</div>
 			<nav id="nav" class="nav-invert">
-				<a href="/"><img src="./media/wechitra.webp" alt="Wechitra" fetchpriority="high"/></a>
+				<a href="/"><img id="nav-logo" src="./media/favicon.svg" alt="Wechitra" fetchpriority="high"/></a>
 				<ul>
 					<li><a href="/#about">About</a></li>
 					<li><a href="/#services">Services</a></li>
 					<li><a href="projects.html">Work</a></li>
 					<li><a href="/#process">Process</a></li>
 				</ul>
-				<a href="contact.html" class="btn nav-btn">Get WeChitra</a>
+				<a href="contact.html" class="btn nav-btn">
+                    Get <img id="nav-logo-btn" src="./media/wechitra.webp"/>
+                </a>
 			</nav>
 
 			{children...}
 
 			<!-- FOOTER -->
 			<footer>
-				<img src="./media/wechitra.webp" alt="Wechitra" loading="lazy"/>
+				<img src="./media/favicon.svg" alt="Wechitra" loading="lazy"/>
 				<p>© 2026 WeChitra. All rights reserved.</p>
 				<ul>
 					<li><a href="https://www.instagram.com/wechitra._">Instagram</a></li>

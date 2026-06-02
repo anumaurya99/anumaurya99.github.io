@@ -62,7 +62,7 @@ window.addEventListener("load", () => {
 
                 video.classList.remove("bw")
                 video.play()
-            }, { passive: false })          // passive:false needed for preventDefault to work
+            }, { passive: false })
 
             const stopHold = () => {
                 if (!holding) return
@@ -99,14 +99,3 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: .1 });
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-// ╭───────────╮
-// │ Send mail │
-// ╰───────────╯
-function sendMail() {
-    const subject = encodeURIComponent(document.getElementById('subject').value);
-    const body = encodeURIComponent(document.getElementById('body').value);
-
-    window.location.href = `mailto:wechitracreativehouse@gmail.com?subject=${subject}&body=${body}`;
-}
-
