@@ -1,13 +1,13 @@
 package web
 
-templ base_layout() {
+templ base_layout(title string) {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-			<link rel="icon" type="image/svg+xml" href="./media/favicon.svg"/>
-			<title>WECHITRA — Visual Storytellers</title>
+			<link rel="icon" type="image/webp" href="./media/icon-title.webp"/>
+			<title>{ title }</title>
 
 			<!-- Fonts: single preconnect pair, both families in one request -->
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -42,11 +42,11 @@ templ base_layout() {
 			<link rel="stylesheet" href="style.css"/>
 		</head>
 		<body>
-			<div id="cur"></div>
-			<div id="ring"></div>
+			<div id="cur" aria-hidden="true"></div>
+			<div id="ring" aria-hidden="true"></div>
 
 			<!-- NAV blur layers -->
-			<div class="nav-blur">
+			<div class="nav-blur" aria-hidden="true">
 				<div class="nb-inner">
 					<div class="nb-layer nb-1"></div>
 					<div class="nb-layer nb-2"></div>
@@ -61,7 +61,7 @@ templ base_layout() {
 				</div>
 			</div>
 			<nav id="nav" class="nav-invert">
-				<a href="/"><img id="nav-logo" src="./media/favicon.svg" alt="Wechitra" fetchpriority="high"/></a>
+				<a href="/"><img id="nav-logo" src="./media/icon.webp" alt="Wechitra" fetchpriority="high"/></a>
 				<ul>
 					<li><a href="/#about">About</a></li>
 					<li><a href="/#services">Services</a></li>
@@ -69,7 +69,7 @@ templ base_layout() {
 					<li><a href="/#process">Process</a></li>
 				</ul>
 				<a href="contact.html" class="btn nav-btn">
-                    Get <img id="nav-logo-btn" src="./media/wechitra.webp"/>
+                    Get <img id="nav-logo-btn" src="./media/wechitra.webp" alt=""/>
                 </a>
 			</nav>
 
@@ -77,15 +77,15 @@ templ base_layout() {
 
 			<!-- FOOTER -->
 			<footer>
-				<img src="./media/favicon.svg" alt="Wechitra" loading="lazy"/>
+				<img src="./media/icon.webp" alt="Wechitra" loading="lazy"/>
 				<p>© 2026 WeChitra. All rights reserved.</p>
 				<ul>
-					<li><a href="https://www.instagram.com/wechitra._">Instagram</a></li>
-					<li><a href="https://api.whatsapp.com/send/?phone=919274788955&text&type=phone_number&app_absent=0">Whatsapp</a></li>
-					<li><a href="https://www.facebook.com/people/We-Chitra-Creative-House/61589114521850/">Facebook</a></li>
-					<li><a href="https://www.youtube.com/@we_chitra">Youtube</a></li>
-					<li><a href="https://www.pinterest.com/wechitracreativehouse/?invite_code=64a471cf6d2245ecac5682ba30573ab5&sender=1101482158771859962">Pinterest</a></li>
-					<li><a href="https://in.linkedin.com/in/we-चित्र-969278404">LinkedIn</a></li>
+					<li><a href="https://www.instagram.com/wechitra._" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+					<li><a href="https://api.whatsapp.com/send/?phone=919274788955&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">Whatsapp</a></li>
+					<li><a href="https://www.facebook.com/people/We-Chitra-Creative-House/61589114521850/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+					<li><a href="https://www.youtube.com/@we_chitra" target="_blank" rel="noopener noreferrer">Youtube</a></li>
+					<li><a href="https://www.pinterest.com/wechitracreativehouse/?invite_code=64a471cf6d2245ecac5682ba30573ab5&sender=1101482158771859962" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+					<li><a href="https://in.linkedin.com/in/we-चित्र-969278404" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
 				</ul>
 			</footer>
 			<script defer src="index.js"></script>

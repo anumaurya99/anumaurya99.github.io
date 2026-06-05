@@ -14,10 +14,11 @@ var projects = []Project{
 }
 
 templ Index() {
-    @base_layout() {
+    @base_layout("Home - WeChitra") {
 
+        <main>
         <!-- HERO -->
-        <main id="hero">
+        <section id="hero">
             <!-- TODO: uncomment sources when media is ready -->
             <video
                 id="hero-video"
@@ -47,7 +48,7 @@ templ Index() {
                 <div class="scroll-line"></div>
                 <span>Scroll</span>
             </div>
-        </main>
+        </section>
 
         <!-- TICKER -->
         <div class="ticker-wrap">
@@ -86,20 +87,20 @@ templ Index() {
                             Wechitra is a bridge between client and content, connecting you to the vast universe of
                             creation. You point, we shoot. Wechitra is here to live a hundred stories that are brewing
                             within you, be a part of your stories and invite you to be a part of ours.</p>
-                        <div class="stats-row">
+                        <dl class="stats-row">
                             <div class="stat">
-                                <div class="stat-n">3</div>
-                                <div class="stat-l">Years Active</div>
+                                <dt class="stat-n">3</dt>
+                                <dd class="stat-l">Years Active</dd>
                             </div>
                             <div class="stat">
-                                <div class="stat-n">30+</div>
-                                <div class="stat-l">Brands</div>
+                                <dt class="stat-n">30+</dt>
+                                <dd class="stat-l">Brands</dd>
                             </div>
                             <div class="stat">
-                                <div class="stat-n">100+</div>
-                                <div class="stat-l">Projects</div>
+                                <dt class="stat-n">100+</dt>
+                                <dd class="stat-l">Projects</dd>
                             </div>
-                        </div>
+                        </dl>
                     </div>
                     <div class="about-right reveal" style="transition-delay:.15s">
                         <div class="about-img">
@@ -260,32 +261,32 @@ templ Index() {
                     <p class="sec-lbl">— How we work</p>
                     <h2 class="sec-h">The Process</h2>
                 </div>
-                <div class="proc-grid reveal" style="transition-delay:.1s">
-                    <div class="proc-step">
+                <ol class="proc-grid reveal" style="transition-delay:.1s">
+                    <li class="proc-step">
                         <div class="proc-n">01</div>
                         <h3 class="proc-name">Discovery</h3>
                         <p class="proc-desc">We immerse ourselves in your world — understanding your story, audience, and
                             the feeling you want to leave behind.</p>
-                    </div>
-                    <div class="proc-step">
+                    </li>
+                    <li class="proc-step">
                         <div class="proc-n">02</div>
                         <h3 class="proc-name">Concept</h3>
                         <p class="proc-desc">Visual treatment, shot lists, mood boards, and storyboards. We design the film
                             before picking up a camera.</p>
-                    </div>
-                    <div class="proc-step">
+                    </li>
+                    <li class="proc-step">
                         <div class="proc-n">03</div>
                         <h3 class="proc-name">Production</h3>
                         <p class="proc-desc">On set, on location — precision execution by our experienced crew with
                             professional-grade cinema equipment.</p>
-                    </div>
-                    <div class="proc-step">
+                    </li>
+                    <li class="proc-step">
                         <div class="proc-n">04</div>
                         <h3 class="proc-name">Deliver</h3>
                         <p class="proc-desc">Edit, grade, sound design, and final delivery in every format. Revision rounds
                             until it's exactly right.</p>
-                    </div>
-                </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
@@ -306,6 +307,7 @@ templ Index() {
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </section>
+        </main>
 
     }
 }

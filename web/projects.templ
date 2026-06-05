@@ -1,198 +1,30 @@
 package web
 
 templ Projects() {
-	@base_layout() {
-		<style>
-            .nav-invert {
-                mix-blend-mode: normal;
-
-                & img {
-                    filter: invert(0);
-                }
-
-                & ul {
-                    & a {
-                        color: var(--fg);
-                    }
-                }
-
-                .nav-btn {
-                    --text-color: var(--fg);
-                }
-            }
-
-			.proj-hdr {
-				margin-bottom: 52px;
-
-				& .sec-h {
-					margin-top: 8px;
-				}
-			}
-
-			/* ── Tab strip ───────────────────────────────────────── */
-			.proj-tabs {
-				position: relative;
-				display: flex;
-				flex-wrap: nowrap;
-				overflow-x: auto;
-				scrollbar-width: none;
-				border-bottom: 1px solid var(--bdr);
-				margin-bottom: 40px;
-
-				&::-webkit-scrollbar {
-					display: none;
-				}
-
-				& [role="tab"] {
-					all: unset;
-					font-family: var(--font-mono);
-					font-size: var(--text-2xs);
-					letter-spacing: .22em;
-					text-transform: uppercase;
-					color: var(--secondary);
-					padding: 14px 20px;
-					white-space: nowrap;
-					cursor: pointer;
-					transition: color var(--anim-time);
-					flex-shrink: 0;
-
-					&:hover,
-					&[aria-selected="true"] {
-						color: var(--accent);
-					}
-
-					&:focus-visible {
-						outline: 2px solid var(--accent);
-						outline-offset: -2px;
-					}
-				}
-
-				/* Sliding gold underline */
-				& .proj-tab-indicator {
-					position: absolute;
-					bottom: -1px;
-					height: 2px;
-					background: var(--accent);
-					pointer-events: none;
-					transition:
-						left  .32s cubic-bezier(.4,0,.2,1),
-						width .32s cubic-bezier(.4,0,.2,1);
-				}
-			}
-
-			/* ── Panels ───────────────────────────────────────────── */
-			[role="tabpanel"][hidden] {
-				display: none;
-			}
-
-			/* ── Media grid ───────────────────────────────────────── */
-			/*
-			  Masonry-style: 3 columns on desktop, 2 on tablet, 1 on mobile.
-			  Items size themselves to their natural aspect ratio — good for a
-			  mix of landscape stills, portrait stills, and square video thumbs.
-			*/
-			.proj-grid {
-				columns: 3;
-				column-gap: 1px;
-
-				@media (max-width: 900px) { columns: 2; }
-				@media (max-width: 540px) { columns: 1; }
-			}
-
-			.proj-item {
-				break-inside: avoid;
-				margin: 0 0 1px;
-				overflow: hidden;
-				position: relative;
-				background: rgba(0,0,0,.06);
-				display: block;
-
-				& img,
-				& video {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					display: block;
-					transition: transform .55s ease, filter .4s ease;
-					filter: brightness(.88) saturate(.9);
-				}
-
-				/* Gold overlay */
-				&::after {
-					content: '';
-					position: absolute;
-					inset: 0;
-					background: transparent;
-					mix-blend-mode: multiply;
-					pointer-events: none;
-					transition: background .4s;
-				}
-
-				&:hover {
-					& img,
-					& video {
-						transform: scale(1.04);
-						filter: brightness(1) saturate(1.1);
-					}
-
-					&::after {
-						background: color-mix(in srgb, var(--accent) 14%, transparent);
-					}
-				}
-
-				/* Placeholder — remove once real media is added */
-				&--placeholder {
-					aspect-ratio: 16/9;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					border: 1px dashed var(--bdr);
-					background: transparent;
-
-					& span {
-						font-family: var(--font-mono);
-						font-size: var(--text-2xs);
-						letter-spacing: .15em;
-						text-transform: uppercase;
-						color: var(--muted);
-					}
-				}
-			}
-
-			@media (max-width: 540px) {
-				.proj-tabs [role="tab"] {
-					padding: 12px 14px;
-					font-size: 0.55rem;
-				}
-			}
-		</style>
-
-
+	@base_layout("Projects - WeChitra") {
+		<main>
 		<section id="projects" class="sec">
 			<div class="wrap">
-
 				<!-- Header -->
 				<div class="proj-hdr reveal">
 					<p class="sec-lbl">Our Work</p>
 					<h1 class="sec-h">Projects</h1>
 				</div>
-
 				<!-- Tab list — one tab per Drive folder -->
 				<div class="proj-tabs" role="tablist" aria-label="Project categories">
-					<button role="tab" id="tab-bts"             aria-selected="true"  aria-controls="panel-bts"             tabindex="0">BTS</button>
-					<button role="tab" id="tab-card-shoot"      aria-selected="false" aria-controls="panel-card-shoot"      tabindex="-1">Card Shoot</button>
-					<button role="tab" id="tab-commercial"      aria-selected="false" aria-controls="panel-commercial"      tabindex="-1">Commercial</button>
-					<button role="tab" id="tab-corporate-film"  aria-selected="false" aria-controls="panel-corporate-film"  tabindex="-1">Corporate Film</button>
+					<button role="tab" id="tab-bts" aria-selected="true" aria-controls="panel-bts" tabindex="0">BTS</button>
+					<button role="tab" id="tab-card-shoot" aria-selected="false" aria-controls="panel-card-shoot" tabindex="-1">Card Shoot</button>
+					<button role="tab" id="tab-commercial" aria-selected="false" aria-controls="panel-commercial" tabindex="-1">Commercial</button>
+					<button role="tab" id="tab-corporate-film" aria-selected="false" aria-controls="panel-corporate-film" tabindex="-1">Corporate Film</button>
 					<button role="tab" id="tab-creative-videos" aria-selected="false" aria-controls="panel-creative-videos" tabindex="-1">Creative Videos</button>
-					<button role="tab" id="tab-documentary"     aria-selected="false" aria-controls="panel-documentary"     tabindex="-1">Documentary</button>
-					<button role="tab" id="tab-event-coverage"  aria-selected="false" aria-controls="panel-event-coverage"  tabindex="-1">Event Coverage</button>
-					<button role="tab" id="tab-fnb"             aria-selected="false" aria-controls="panel-fnb"             tabindex="-1">F&amp;B</button>
-					<button role="tab" id="tab-interior"        aria-selected="false" aria-controls="panel-interior"        tabindex="-1">Interior</button>
-					<button role="tab" id="tab-jewellery"       aria-selected="false" aria-controls="panel-jewellery"       tabindex="-1">Jewellery</button>
-					<button role="tab" id="tab-podcast"         aria-selected="false" aria-controls="panel-podcast"         tabindex="-1">Podcast</button>
+					<button role="tab" id="tab-documentary" aria-selected="false" aria-controls="panel-documentary" tabindex="-1">Documentary</button>
+					<button role="tab" id="tab-event-coverage" aria-selected="false" aria-controls="panel-event-coverage" tabindex="-1">Event Coverage</button>
+					<button role="tab" id="tab-fnb" aria-selected="false" aria-controls="panel-fnb" tabindex="-1">F&amp;B</button>
+					<button role="tab" id="tab-interior" aria-selected="false" aria-controls="panel-interior" tabindex="-1">Interior</button>
+					<button role="tab" id="tab-jewellery" aria-selected="false" aria-controls="panel-jewellery" tabindex="-1">Jewellery</button>
+					<button role="tab" id="tab-podcast" aria-selected="false" aria-controls="panel-podcast" tabindex="-1">Podcast</button>
 					<span class="proj-tab-indicator" aria-hidden="true"></span>
 				</div>
-
 				<!-- ───────────────────────────────────────────────────────────-->
 				<!-- Tab Panels                                                 -->
 				<!-- Each panel: drop your <img> / <video> tags into .proj-grid -->
@@ -209,9 +41,7 @@ templ Projects() {
 				<!--            loop muted playsinline></video>                 -->
 				<!--   </figure>                                                -->
 				<!-- ────────────────────────────────────────────────────────── -->
-
 				<div class="proj-panels">
-
 					<!-- BTS -->
 					<div role="tabpanel" id="panel-bts" aria-labelledby="tab-bts">
 						<div class="proj-grid">
@@ -221,7 +51,6 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 					<!-- Card Shoot Wechitra -->
 					<div role="tabpanel" id="panel-card-shoot" aria-labelledby="tab-card-shoot" hidden>
 						<div class="proj-grid">
@@ -230,7 +59,6 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 					<!-- Commercial -->
 					<div role="tabpanel" id="panel-commercial" aria-labelledby="tab-commercial" hidden>
 						<div class="proj-grid">
@@ -239,7 +67,6 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 					<!-- Corporate Film -->
 					<div role="tabpanel" id="panel-corporate-film" aria-labelledby="tab-corporate-film" hidden>
 						<div class="proj-grid">
@@ -248,7 +75,6 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 					<!-- Creative Videos -->
 					<div role="tabpanel" id="panel-creative-videos" aria-labelledby="tab-creative-videos" hidden>
 						<div class="proj-grid">
@@ -257,7 +83,6 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 					<!-- Documentary -->
 					<div role="tabpanel" id="panel-documentary" aria-labelledby="tab-documentary" hidden>
 						<div class="proj-grid">
@@ -266,7 +91,6 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 					<!-- Event Coverage -->
 					<div role="tabpanel" id="panel-event-coverage" aria-labelledby="tab-event-coverage" hidden>
 						<div class="proj-grid">
@@ -275,7 +99,6 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 					<!-- F&B -->
 					<div role="tabpanel" id="panel-fnb" aria-labelledby="tab-fnb" hidden>
 						<div class="proj-grid">
@@ -284,7 +107,6 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 					<!-- Interior -->
 					<div role="tabpanel" id="panel-interior" aria-labelledby="tab-interior" hidden>
 						<div class="proj-grid">
@@ -293,7 +115,6 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 					<!-- Jewellery -->
 					<div role="tabpanel" id="panel-jewellery" aria-labelledby="tab-jewellery" hidden>
 						<div class="proj-grid">
@@ -302,7 +123,6 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 					<!-- Podcast -->
 					<div role="tabpanel" id="panel-podcast" aria-labelledby="tab-podcast" hidden>
 						<div class="proj-grid">
@@ -311,80 +131,10 @@ templ Projects() {
 							</figure>
 						</div>
 					</div>
-
 				</div><!-- /proj-panels -->
 			</div><!-- /wrap -->
 		</section>
-
-		<script>
-            (function () {
-                const tablist  = document.querySelector('.proj-tabs');
-                const tabs     = [...tablist.querySelectorAll('[role="tab"]')];
-                const indicator = tablist.querySelector('.proj-tab-indicator');
-                const panels   = [...document.querySelectorAll('#projects [role="tabpanel"]')];
-
-                function moveIndicator(tab) {
-                    const listRect = tablist.getBoundingClientRect();
-                    const tabRect  = tab.getBoundingClientRect();
-                    indicator.style.left  = (tabRect.left - listRect.left + tablist.scrollLeft) + 'px';
-                    indicator.style.width = tabRect.width + 'px';
-                }
-
-                function activate(tab) {
-                    tabs.forEach(t => {
-                        t.setAttribute('aria-selected', 'false');
-                        t.setAttribute('tabindex', '-1');
-                    });
-                    panels.forEach(p => { p.hidden = true; });
-
-                    tab.setAttribute('aria-selected', 'true');
-                    tab.setAttribute('tabindex', '0');
-                    document.getElementById(tab.getAttribute('aria-controls')).hidden = false;
-                    moveIndicator(tab);
-
-                    // Scroll tab into view on mobile
-                    tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                }
-
-                function switchTab(tab) {
-                    if (document.startViewTransition) {
-                        document.startViewTransition(() => activate(tab));
-                    } else {
-                        activate(tab);
-                    }
-                }
-
-                tabs.forEach((tab, i) => {
-                    tab.addEventListener('click', () => { tab.focus(); switchTab(tab); });
-                    tab.addEventListener('keydown', e => {
-                        const map = {
-                            ArrowRight: (i + 1) % tabs.length,
-                            ArrowLeft:  (i - 1 + tabs.length) % tabs.length,
-                            Home: 0,
-                            End:  tabs.length - 1,
-                        };
-                        if (!(e.key in map)) return;
-                        e.preventDefault();
-                        const next = tabs[map[e.key]];
-                        next.focus();
-                        switchTab(next);
-                    });
-                });
-
-                // Set initial indicator position
-                moveIndicator(tabs.find(t => t.getAttribute('aria-selected') === 'true'));
-                window.addEventListener('resize', () => {
-                    moveIndicator(tabs.find(t => t.getAttribute('aria-selected') === 'true'));
-                }, { passive: true });
-
-                // Hover play/pause for videos (same pattern as main site)
-                document.querySelectorAll('#projects .proj-item').forEach(item => {
-                    const video = item.querySelector('video');
-                    if (!video) return;
-                    item.addEventListener('mouseenter', () => { video.play(); });
-                    item.addEventListener('mouseleave', () => { video.pause(); });
-                });
-            })();
-		</script>
+		</main>
+		<script defer src="projects.js"></script>
 	}
 }
