@@ -8,7 +8,6 @@ templ base_layout(title string) {
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<link rel="icon" type="image/webp" href="./media/icon-title.webp"/>
 			<title>{ title }</title>
-
 			<!-- Fonts: single preconnect pair, both families in one request -->
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -24,7 +23,6 @@ templ base_layout(title string) {
 					rel="stylesheet"
 				/>
 			</noscript>
-
 			<!-- Inline critical CSS: above-the-fold nav + hero only -->
 			<style>
 				:root{--fg:#000;--primary:#8C2312;--secondary:#FFFBCD;--accent:#F6B23B;--muted:rgba(0,0,0,.5);--bdr:rgba(246,178,59,.3);--font-display:'Bodoni Moda',sans-serif;--font-body:sans-serif;--font-mono:monospace;--text-3xs:.5rem;--text-2xs:.625rem;--text-xs:.75rem;--text-sm:.875rem;--text-base:1rem;--text-md:1.125rem;--text-lg:1.333rem;--text-xl:1.777rem;--text-2xl:2.369rem;--text-3xl:3.157rem;--display-size:clamp(2.5rem,6.25vw,5rem);--text-stroke:clamp(1px,calc(0.75px + (100vw - 320px)/448),2.25px) var(--fg);--g:48px;--max:1400px}
@@ -38,13 +36,11 @@ templ base_layout(title string) {
 				nav{position:fixed;inset:0 0 auto;z-index:100;padding:13px var(--g);display:flex;align-items:center;justify-content:space-between;transition:background .3s ease,backdrop-filter .3s ease}
 				#hero{height:100vh;min-height:680px;display:flex;align-items:center;position:relative;overflow:hidden}
 			</style>
-
 			<link rel="stylesheet" href="style.css"/>
 		</head>
 		<body>
 			<div id="cur" aria-hidden="true"></div>
 			<div id="ring" aria-hidden="true"></div>
-
 			<!-- NAV blur layers -->
 			<div class="nav-blur" aria-hidden="true">
 				<div class="nb-inner">
@@ -60,21 +56,21 @@ templ base_layout(title string) {
 					<div class="nb-layer nb-10"></div>
 				</div>
 			</div>
-			<nav id="nav" class="nav-invert">
-				<a href="/"><img id="nav-logo" src="./media/icon.webp" alt="Wechitra" fetchpriority="high"/></a>
+			<nav id="nav">
+				<a href="/">
+					<img id="nav-logo" src="./media/icon.webp" alt="Wechitra" fetchpriority="high"/>
+				</a>
 				<ul>
 					<li><a href="/#about">About</a></li>
 					<li><a href="/#services">Services</a></li>
-					<li><a href="projects.html">Work</a></li>
 					<li><a href="/#process">Process</a></li>
+					<li><a href="projects.html">Work</a></li>
 				</ul>
 				<a href="contact.html" class="btn nav-btn">
-                    Get <img id="nav-logo-btn" src="./media/wechitra.webp" alt=""/>
-                </a>
+					Get <img id="nav-logo-btn" class="nav-invert" src="./media/wechitra-accent.webp" alt=""/>
+				</a>
 			</nav>
-
-			{children...}
-
+			{ children... }
 			<!-- FOOTER -->
 			<footer>
 				<img src="./media/icon.webp" alt="Wechitra" loading="lazy"/>
@@ -88,7 +84,7 @@ templ base_layout(title string) {
 					<li><a href="https://in.linkedin.com/in/we-चित्र-969278404" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
 				</ul>
 			</footer>
-			<script defer src="index.js"></script>
+			<script defer src="common.js"></script>
 		</body>
 	</html>
 }

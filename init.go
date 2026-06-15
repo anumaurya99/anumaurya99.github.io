@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"flag"
 	"fmt"
 
 	"io"
@@ -15,75 +16,84 @@ import (
 	"github.com/andybalholm/brotli"
 )
 
-const disabled = true
+var enableCompression, pc bool
+var logf = func(format string, args ...any) {}
+
+func compressFileBrotliIfNotExist(src string, quality int) error {
+	if !enableCompression {
+		return nil
+	}
+	_, err := os.Stat(src + ".br")
+	if !errors.Is(err, os.ErrNotExist) {
+		return nil
+	}
+
+	in, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer in.Close()
+
+	outPath := src + ".br"
+	logf("%s -> %s", filepath.Base(src), filepath.Base(outPath))
+
+	outFile, err := os.Create(outPath)
+	if err != nil {
+		return err
+	}
+	defer outFile.Close()
+
+	bw := brotli.NewWriterLevel(outFile, quality)
+	defer bw.Close()
+
+	_, err = io.Copy(bw, in)
+	return err
+}
 
 func init() {
 	staticDir := "out"
 
+	flag.BoolVar(&enableCompression, "compress", false, "[default:false] enable brotli compression")
+	flag.BoolVar(&pc, "pc", false, "[default:false] print when compressed")
+	flag.Parse()
+
+	if pc {
+		logf = log.Printf
+	}
+
 	// pass 1 - delete compressed files if last modified time is > 1sec
-	log.Printf("Pass 1 @ %v", staticDir)
-	filepath.WalkDir(staticDir, func(path string, entry fs.DirEntry, err error) error {
+	logf("Pass1 @ %v", staticDir)
+	if err := filepath.WalkDir(staticDir, func(path string, entry fs.DirEntry, err error) error {
 		if err != nil {
 			fmt.Printf("WalkDir failed with err: %+v\n", err.Error())
 			return err
 		}
 
-		if strings.HasSuffix(entry.Name(), ".br") {
-			fileEntryInfo, err := entry.Info()
-			if err != nil {
-				return err
-			}
-			if time.Since(fileEntryInfo.ModTime()) < time.Second {
-				log.Printf("Skipping %s", filepath.Base(entry.Name()))
-				return nil
-			}
-			err = os.Remove(path)
-			if err != nil {
-				return err
-			}
+		if !enableCompression || !strings.HasSuffix(entry.Name(), ".br") {
+			return nil
 		}
 
-		return nil
-	})
+		info, err := entry.Info()
+		if err != nil {
+			return err
+		}
+		if time.Since(info.ModTime()) < time.Second {
+			logf("Skipping %s", filepath.Base(entry.Name()))
+			return nil
+		}
+
+		return os.Remove(path)
+	}); err != nil {
+		log.Fatal("[Pass1] Failed to WalkDir")
+	}
 
 	// pass 2 - only after removing stale files, recompress them
-	log.Printf("Pass 2 @ %v", staticDir)
-	filepath.WalkDir(staticDir, func(path string, entry fs.DirEntry, err error) error {
+	logf("Pass2 @ %v", staticDir)
+
+	if err := filepath.WalkDir(staticDir, func(path string, entry fs.DirEntry, err error) error {
 		if err != nil {
 			fmt.Printf("WalkDir failed with err: %+v\n", err.Error())
 			return err
-		}
-
-		var compressFileBrotliIfNotExist = func(src string, quality int) error {
-			_, err := os.Stat(src + ".br")
-			if !errors.Is(err, os.ErrNotExist) {
-				return nil
-			}
-
-			in, err := os.Open(src)
-			if err != nil {
-				return err
-			}
-			defer in.Close()
-
-			outPath := src + ".br"
-
-			log.Printf("%s -> %s", filepath.Base(src), filepath.Base(outPath))
-
-			if !disabled {
-				outFile, err := os.Create(outPath)
-				if err != nil {
-					return err
-				}
-				defer outFile.Close()
-
-				bw := brotli.NewWriterLevel(outFile, quality)
-				defer bw.Close()
-
-				_, err = io.Copy(bw, in)
-				return err
-			}
-			return nil
 		}
 
 		if entry.Type().IsDir() {
@@ -97,5 +107,7 @@ func init() {
 
 		compressFileBrotliIfNotExist(abs, brotli.BestCompression)
 		return nil
-	})
+	}); err != nil {
+		log.Fatal("[Pass2] Failed to WalkDir")
+	}
 }

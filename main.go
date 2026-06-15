@@ -10,7 +10,7 @@ import (
 	"wechitracreativehouse.in/web"
 )
 
-func check(err error, msg string) {
+func check(err error, msg any) {
 	if err != nil {
 		panic(msg)
 	}
@@ -18,7 +18,7 @@ func check(err error, msg string) {
 
 func generateFile(template templ.Component, path string) {
 	err := os.MkdirAll(filepath.Dir(path), 0755)
-	check(err, "")
+	check(err, "Failed to mkdir")
 
 	f, err := os.Create(path)
 	check(err, fmt.Sprintf("something went wrong generating file: %s with err:\n%v", path, err))

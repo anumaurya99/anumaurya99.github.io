@@ -284,16 +284,8 @@ body {
 .nav-invert {
     mix-blend-mode: difference;
 
-    & img {
-        filter: invert(1);
-    }
-
     &.scrolled {
         mix-blend-mode: normal;
-
-        & img {
-            filter: none;
-        }
 
         & ul a {
             color: var(--fg);
@@ -304,7 +296,6 @@ body {
         }
 
         & .nav-btn {
-            --text-color: var(--accent);
             --border-and-shadow: var(--accent);
         }
     }
@@ -316,9 +307,8 @@ body {
     }
 
     .nav-btn {
-        --text-color: #fff;
+        --text-color: var(--accent);
     }
-
 }
 
 nav {
@@ -1106,21 +1096,6 @@ footer {
 }
 
 /* ─── PROJECTS ──────────────────────────────────────────── */
-body:has(#projects) .nav-invert {
-    mix-blend-mode: normal;
-
-    & img {
-        filter: invert(0);
-    }
-
-    & ul a {
-        color: var(--fg);
-    }
-
-    & .nav-btn {
-        --text-color: var(--fg);
-    }
-}
 
 .proj-hdr {
     margin-bottom: 52px;
@@ -1175,8 +1150,8 @@ body:has(#projects) .nav-invert {
     background: var(--accent);
     pointer-events: none;
     transition:
-        left  .32s cubic-bezier(.4,0,.2,1),
-        width .32s cubic-bezier(.4,0,.2,1);
+        left .32s cubic-bezier(.4, 0, .2, 1),
+        width .32s cubic-bezier(.4, 0, .2, 1);
 }
 
 #projects [role="tabpanel"][hidden] {
@@ -1193,7 +1168,7 @@ body:has(#projects) .nav-invert {
     margin: 0 0 1px;
     overflow: hidden;
     position: relative;
-    background: rgba(0,0,0,.06);
+    background: rgba(0, 0, 0, .06);
     display: block;
 }
 
