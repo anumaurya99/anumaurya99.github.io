@@ -284,8 +284,16 @@ body {
 .nav-invert {
     mix-blend-mode: difference;
 
+    & #nav-logo {
+        filter: invert(1);
+    }
+
     &.scrolled {
         mix-blend-mode: normal;
+
+        & #nav-logo {
+            filter: none;
+        }
 
         & ul a {
             color: var(--fg);
@@ -296,7 +304,13 @@ body {
         }
 
         & .nav-btn {
-            --border-and-shadow: var(--accent);
+            --color: var(--accent);
+            --text-color: var(--color);
+            --border-and-shadow: var(--color);
+
+            & img {
+                filter: none;
+            }
         }
     }
 
@@ -307,7 +321,12 @@ body {
     }
 
     .nav-btn {
-        --text-color: var(--accent);
+        --border-and-shadow: white;
+        --text-color: white;
+
+        & img {
+            filter: brightness(100) grayscale(100);
+        }
     }
 }
 
@@ -353,12 +372,13 @@ nav {
     }
 
     .nav-btn {
-        --border-and-shadow: var(--accent);
-        --text-color: var(--accent);
+        --color: var(--accent);
+        --border-and-shadow: var(--color);
+        --text-color: var(--color);
         padding: 9px 18px;
 
         &:hover {
-            color: var(--accent);
+            color: var(--color);
         }
     }
 }
@@ -1015,7 +1035,19 @@ footer {
     font-size: var(--text-xs);
 
     & img {
-        width: 3%;
+        width: 50px;
+        aspect-ratio: 5/2;
+        background-color: var(--secondary);
+
+        /* The black image acts as a mask */
+        -webkit-mask-image: url('./media/icon.webp');
+        mask-image: url('./media/icon.webp');
+
+        /* Ensure the mask fits the container */
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
     }
 
     & p,
@@ -1023,7 +1055,7 @@ footer {
         font-family: var(--font-mono);
         letter-spacing: .15em;
         text-transform: uppercase;
-        color: var(--muted);
+        color: var(--secondary);
     }
 
     & ul {
