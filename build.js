@@ -23,7 +23,7 @@ const { code } = transform({
 writeFileSync("./dist/style.css", code);
 
 // Minify HTML
-const files = ["index.html", "contact.html", "projects.html"]
+const files = ["index.html", "contact.html", "library.html"]
 
 for (const file of files) {
     const html = readFileSync("./out/" + file, "utf8");

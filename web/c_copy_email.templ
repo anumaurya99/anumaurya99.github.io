@@ -1,0 +1,20 @@
+package web;
+
+templ CopyEmail() {
+	<div id="copy-email">
+		{{ email := "wechitracreativehouse@gmail.com" }}
+		<span>{ email }</span>
+		<script>
+            function copyToClipboard(text) {
+                navigator.clipboard.writeText(text)
+                .then(() => {
+                    window.toast.success("Copied!", { variant: "filled" });
+                })
+                .catch(() => {
+                    window.toast.error("Failed to copy!", { variant: "filled" });
+                });
+            }
+        </script>
+		<button class="btn" onclick={ templ.JSFuncCall("copyToClipboard", email) }>copy</button>
+	</div>
+}
