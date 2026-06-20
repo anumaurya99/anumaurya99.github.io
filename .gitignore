@@ -3,6 +3,7 @@ node_modules/
 
 tmp/
 dist/
+bin/
 
 out/*.html
 web/*_templ.go
