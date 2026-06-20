@@ -8,24 +8,28 @@ cpSync("./out/media", "./dist/media", { recursive: true });
 
 // Minify JS
 await Bun.build({
-    entrypoints: ["./out/index.js"],
+    entrypoints: ["./out/index.js", "./out/toast.min.js"],
     outdir: "./dist",
     minify: true,
 });
 
 // Minify CSS
-const css = readFileSync("./out/style.css");
-const { code } = transform({
-    filename: "style.css",
-    code: css,
-    minify: true,
-});
-writeFileSync("./dist/style.css", code);
+const cssFiles = ["style.css", "toast.css"];
+
+for (const file of cssFiles) {
+    const css = readFileSync("./out/" + file);
+    const { code } = transform({
+        filename: "style.css",
+        code: css,
+        minify: true,
+    });
+    writeFileSync("./dist/" + file, code);
+}
 
 // Minify HTML
-const files = ["index.html", "contact.html", "library.html"]
+const htmlFiles = ["index.html", "contact.html", "library.html"]
 
-for (const file of files) {
+for (const file of htmlFiles) {
     const html = readFileSync("./out/" + file, "utf8");
     const minified = await minify(html, {
         collapseWhitespace: true,
