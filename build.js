@@ -2,13 +2,11 @@ import { minify } from "html-minifier-terser";
 import { transform } from "lightningcss";
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { cpSync } from "fs";
-
-// mkdirSync("./dist", { recursive: true });
-// cpSync("./out/media", "./dist/media", { recursive: true });
-//
 import { readdir } from "node:fs/promises";
 
-// read all the files in the current directory, recursively
+mkdirSync("./dist", { recursive: true });
+cpSync("./out/media", "./dist/media", { recursive: true });
+
 const outFiles = await readdir("./out", { recursive: true });
 
 // Minify JS
