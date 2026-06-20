@@ -13,7 +13,7 @@ const outFiles = await readdir("./out", { recursive: true });
 
 // Minify JS
 await Bun.build({
-    entrypoints: outFiles.filter((outFile) => outFile.includes(".js")),
+    entrypoints: outFiles.filter((outFile) => outFile.includes(".js")).map((outFile) => "./out/" + outFile),
     outdir: "./dist",
     minify: true,
 });
