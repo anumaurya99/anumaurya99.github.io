@@ -3,23 +3,26 @@ import { transform } from "lightningcss";
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { cpSync } from "fs";
 
-mkdirSync("./dist", { recursive: true });
-cpSync("./out/media", "./dist/media", { recursive: true });
+// mkdirSync("./dist", { recursive: true });
+// cpSync("./out/media", "./dist/media", { recursive: true });
+//
+import { readdir } from "node:fs/promises";
+
+// read all the files in the current directory, recursively
+const outFiles = await readdir("./out", { recursive: true });
 
 // Minify JS
 await Bun.build({
-    entrypoints: ["./out/index.js", "./out/toast.min.js"],
+    entrypoints: outFiles.filter((outFile) => outFile.includes(".js")),
     outdir: "./dist",
     minify: true,
 });
 
 // Minify CSS
-const cssFiles = ["style.css", "toast.css"];
-
-for (const file of cssFiles) {
+for (const file of outFiles.filter((outFile) => outFile.includes(".css"))) {
     const css = readFileSync("./out/" + file);
     const { code } = transform({
-        filename: "style.css",
+        filename: file,
         code: css,
         minify: true,
     });
@@ -27,9 +30,7 @@ for (const file of cssFiles) {
 }
 
 // Minify HTML
-const htmlFiles = ["index.html", "contact.html", "library.html"]
-
-for (const file of htmlFiles) {
+for (const file of outFiles.filter((outFile) => outFile.includes(".html"))) {
     const html = readFileSync("./out/" + file, "utf8");
     const minified = await minify(html, {
         collapseWhitespace: true,
