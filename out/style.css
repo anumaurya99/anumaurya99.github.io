@@ -903,6 +903,7 @@ nav {
 /* ─── CTA ───────────────────────────────────────────────── */
 #contact {
     --gap: 2rem;
+    --font: var(--text-base);
 
     background: var(--secondary);
     text-align: center;
@@ -926,11 +927,13 @@ nav {
             align-self: stretch;
             display: flex;
             align-items: center;
+            font-size: var(--font);
+            text-transform: uppercase;
         }
 
         & button {
             padding: var(--pad);
-            font-size: 1rem;
+            font-size: var(--font);
         }
     }
 
@@ -1447,8 +1450,23 @@ footer {
     }
 
     #contact {
+        --gap: 1.5rem;
+
         & iframe {
             width: 90%;
+        }
+
+        & #copy-email {
+            flex-direction: column;
+
+            & span {
+                width: 100%;
+            }
+
+            & button {
+                width: 100%;
+                font-size: var(--text-sm);
+            }
         }
 
         & .contact-cols {
