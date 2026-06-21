@@ -9,7 +9,7 @@ document.getElementById('nav').classList.add('nav-invert');
 // ╰─────────────────╯
 
 const videos = document.querySelectorAll(".work-grid>.wi>video");
-if (videos === null || videos === undefined) {
+if (videos.length === 0) {
     console.error(`".work-grid" does not exist.`)
 }
 
