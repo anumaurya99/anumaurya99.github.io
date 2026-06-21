@@ -30,7 +30,7 @@ await Bun.build({
     minify: {
         whitespace: true,
         syntax: true,
-        identifiers: false,  // ← this is what causes the collision
+        identifiers: false,
     },
 });
 
