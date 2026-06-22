@@ -17,7 +17,6 @@ const outFiles = (await readdir("./out", { recursive: true, withFileTypes: true 
     )
     .map((stat) => stat.name)
 
-console.log(outFiles)
 // Minify JS
 const jsFiles = outFiles.filter((outFile) => outFile.endsWith(".js"));
 if (jsFiles.length === 0) {
