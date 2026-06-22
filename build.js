@@ -9,7 +9,6 @@ cpSync("./out/media", "./dist/media", { recursive: true });
 
 const outFiles = (await readdir("./out", { recursive: true, withFileTypes: true }))
     .filter((file) =>
-        !file.name.includes(".min.") &&
         !file.name.endsWith(".webp") &&
         !file.name.endsWith(".svg") &&
         !file.name.endsWith(".mp4") &&
@@ -23,12 +22,14 @@ if (jsFiles.length === 0) {
     throw new Error("No JS files found")
 }
 await Bun.build({
-    entrypoints: jsFiles.map((outFile) => "./out/" + outFile),
+    entrypoints: jsFiles.map((file) => {
+        return "./out/" + file
+    }),
     outdir: "./dist",
     minify: {
         whitespace: true,
         syntax: true,
-        identifiers: false,  // ← this is what causes the collision
+        identifiers: false,
     },
 });
 
@@ -63,4 +64,4 @@ for (const file of htmlFiles) {
     writeFileSync("./dist/" + file, minified);
 }
 
-console.log("Build done.");
+console.log("✅ Build Complete");
