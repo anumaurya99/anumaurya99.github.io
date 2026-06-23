@@ -13,7 +13,6 @@ if (videos.length === 0) {
     console.error(`".work-grid" does not exist.`)
 }
 
-console.log(videos)
 window.addEventListener("load", () => {
     for (let video of videos) {
         // Desktop

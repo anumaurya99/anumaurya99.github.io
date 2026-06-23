@@ -1,11 +1,7 @@
 {
     "scripts": {
-        "build": "bun build.js",
+        "build": "go run build.go",
         "deploy": "bash deploy.sh",
         "dev": "bunx live-server out/ --no-browser --open='/'  --entry-file='index.html'"
-    },
-    "devDependencies": {
-        "html-minifier-terser": "^7.2.0",
-        "lightningcss": "^1.32.0"
     }
 }

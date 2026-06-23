@@ -2,7 +2,7 @@
 set -e
 
 # Build
-bun run build.js
+go run build.go
 
 # Copy dist to a temp location outside the repo
 TMPDIR=$(mktemp -d)
