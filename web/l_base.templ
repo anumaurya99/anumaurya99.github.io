@@ -6,39 +6,18 @@ templ base_layout(title string) {
 		<head>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-			<link rel="icon" type="image/webp" href="./media/icon-title.webp"/>
+			<link rel="icon" type="image/webp" href="./media/icon_title.webp"/>
 			<title>{ title }</title>
+
 			<!-- Fonts: single preconnect pair, both families in one request -->
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-			<link
-				rel="preload"
-				as="style"
-				href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
-				onload="this.onload=null;this.rel='stylesheet'"
-			/>
-			<noscript>
-				<link
-					href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
-					rel="stylesheet"
-				/>
-			</noscript>
+
 			<!-- Inline critical CSS: above-the-fold nav + hero only -->
-			<style>
-				:root{--fg:#000;--primary:#8C2312;--secondary:#FFFBCD;--accent:#F6B23B;--muted:rgba(0,0,0,.5);--bdr:rgba(246,178,59,.3);--font-display:'Bodoni Moda',sans-serif;--font-body:sans-serif;--font-mono:monospace;--text-3xs:.5rem;--text-2xs:.625rem;--text-xs:.75rem;--text-sm:.875rem;--text-base:1rem;--text-md:1.125rem;--text-lg:1.333rem;--text-xl:1.777rem;--text-2xl:2.369rem;--text-3xl:3.157rem;--display-size:clamp(2.5rem,6.25vw,5rem);--text-stroke:clamp(1px,calc(0.75px + (100vw - 320px)/448),2.25px) var(--fg);--g:48px;--max:1400px}
-				*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-				html{font-size:16px;scroll-behavior:smooth}
-				body{background:var(--primary);color:var(--fg);font-family:var(--font-body);overflow-x:hidden;cursor:none}
-				#cur,#ring{position:fixed;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%)}
-				#cur{width:7px;height:7px;background:var(--accent);z-index:9999;transition:width .25s,height .25s}
-				#ring{width:34px;height:34px;border:1px solid rgba(246,178,59,.4);z-index:9998;transition:width .3s,height .3s}
-				.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
-				nav{position:fixed;inset:0 0 auto;z-index:100;padding:13px var(--g);display:flex;align-items:center;justify-content:space-between;transition:background .3s ease,backdrop-filter .3s ease}
-				#hero{height:100vh;min-height:680px;display:flex;align-items:center;position:relative;overflow:hidden}
-			</style>
 			<link rel="stylesheet" href="toast.css"/>
 			<link rel="stylesheet" href="style.css"/>
 		</head>
+
 		<body>
 			<div id="cur" aria-hidden="true"></div>
 			<div id="ring" aria-hidden="true"></div>
@@ -57,6 +36,7 @@ templ base_layout(title string) {
 					<div class="nb-layer nb-10"></div>
 				</div>
 			</div>
+
 			<nav id="nav">
 				<a href="/">
 					<img id="nav-logo" src="./media/icon.webp" alt="Wechitra" fetchpriority="high"/>
@@ -68,10 +48,12 @@ templ base_layout(title string) {
 					<li><a href="library.html">Library</a></li>
 				</ul>
 				<a href="contact.html" class="btn nav-btn">
-					Get <img id="nav-logo-btn" class="nav-invert" src="./media/wechitra-accent.webp" alt=""/>
+					Get <img id="nav-logo-btn" class="nav-invert" src="./media/wechitra_accent.webp" alt=""/>
 				</a>
 			</nav>
+
 			{ children... }
+
 			<!-- FOOTER -->
 			<footer>
 				<img src="" alt="" loading="lazy"/>

@@ -7,3 +7,5 @@ bin/
 
 out/*.html
 web/*_templ.go
+
+out/media/lib
