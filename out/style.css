@@ -1,15 +1,11 @@
 @import "reset.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 /* ─── TOKENS ────────────────────────────────────────────── */
 :root {
     --fg: #000;
     --primary: #8C2312;
     --secondary: #FFFBCD;
     --accent: #F6B23B;
-    --muted: rgba(0, 0, 0, .5);
     --bdr: rgba(246, 178, 59, .3);
 
     --font-display: "Bodoni Moda", serif;
@@ -80,10 +76,6 @@ h3 {
 
 h4 {
     font-size: var(--text-base);
-}
-
-p {
-    color: var(--muted);
 }
 
 /* stroke-outline text modifier used in headings */
@@ -193,7 +185,6 @@ footer ul a,
 .btn-g {
     letter-spacing: .2em;
     text-decoration: none;
-    color: var(--muted);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -396,6 +387,7 @@ nav {
         position: absolute;
         top: 50%;
         left: 50%;
+        max-width: none;
         transform: translate(-50%, -50%);
         z-index: -10;
     }
@@ -540,7 +532,6 @@ nav {
 
             & .stat-l {
                 letter-spacing: .2em;
-                color: var(--muted);
                 margin-top: 6px;
             }
         }
@@ -1142,7 +1133,6 @@ footer {
 
         & span {
             letter-spacing: .15em;
-            color: var(--muted);
         }
     }
 }
