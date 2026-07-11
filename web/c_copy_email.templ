@@ -3,7 +3,6 @@ package web;
 templ CopyEmail() {
 	<div id="copy-email">
 		{{ email := "wechitracreativehouse@gmail.com" }}
-		<span>{ email }</span>
 		<script>
             function copyToClipboard(text) {
                 navigator.clipboard.writeText(text)
@@ -15,6 +14,6 @@ templ CopyEmail() {
                 });
             }
         </script>
-		<button class="btn" onclick={ templ.JSFuncCall("copyToClipboard", email) }>copy</button>
+			<button class="btn" onclick={ templ.JSFuncCall("copyToClipboard", email) }>{email}</button>
 	</div>
 }

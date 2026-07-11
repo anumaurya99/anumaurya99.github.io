@@ -12,7 +12,7 @@
     --font-body: "Montserrat", sans-serif;
     --font-mono: "Google Sans Code", monospace;
 
-    --ratio-lg: 1.5;
+    --ratio-lg: 1.618;
     --ratio-sm: 1.25;
 
     --text-xxs:   calc(var(--text-xs) / var(--ratio-sm));
@@ -23,11 +23,35 @@
     --text-xl:   calc(var(--text-lg) * var(--ratio-lg));
     --text-2xl:  calc(var(--text-xl) * var(--ratio-lg));
 
+    --wght-sb: 550;
+
     --text-stroke: clamp(1px, calc(0.75px + (100vw - 320px) / 448), 2.25px) var(--fg);
 
     --gap: clamp(1.5rem, 2.5rem + 0.4vw, 3.5rem);
     --max: 1400px;
     --anim-time: .25s;
+
+
+    /*TOAST */
+    /* semantic state colors */
+    --success-color: oklch(0.627 0.194 149.214 / .4);
+    --warning-color: oklch(0.705 0.213 47.604 / .4);
+    --info-color: oklch(0.546 0.245 262.881 / .4);
+    --error-color: oklch(0.577 0.245 27.325 / .4);
+
+    /* surface + border */
+    --background-color: oklch(1 0 0);
+    --fill-color: oklch(1 0 0);
+    --border-color: oklch(95.514% 0.00011 271.152);
+    --stroke-color: var(--secondary);
+    --stroke-color-foreground: var(--secondary);
+
+    /* text */
+    --text-color-primary: var(--secondary);
+    --text-color-primary-foreground: var(--secondary);
+    --text-color-secondary: var(--secondary);
+    --text-color-secondary-foreground: var(--secondary);
+
 }
 
 .unselectable {
@@ -175,6 +199,7 @@ footer ul a,
     --border-and-shadow: var(--secondary);
     --text-color: var(--secondary);
     padding: 14px 28px;
+    font-weight: var(--wght-sb);
 
     &:hover {
         --border-and-shadow: var(--accent);
@@ -190,7 +215,7 @@ footer ul a,
     gap: 8px;
     transition: color var(--anim-time);
     font-size: var(--text-sm);
-    mix-blend-mode: difference;
+    color: var(--secondary);
 
     &:hover {
         color: var(--accent);
@@ -805,7 +830,6 @@ nav {
 /* ─── CTA / CONTACT ─────────────────────────────────────── */
 #contact {
     --font: var(--text-base);
-    --pad: 1.5rem;
 
     background: var(--secondary);
     text-align: center;
@@ -827,23 +851,19 @@ nav {
         padding-bottom: var(--gap);
         display: flex;
         align-items: center;
-        gap: var(--pad);
+        gap: var(--gap);
+        font-weight: var(--wght-sb);
 
-        & span {
-            background: var(--primary);
-            padding: var(--pad);
-            color: var(--secondary);
+        & button {
+            color: var(--primary);
+            padding: calc(var(--gap)/var(--ratio-lg));
+            justify-content: center;
+
             align-self: stretch;
             display: flex;
             align-items: center;
             text-transform: uppercase;
-        }
-
-        & button {
-            padding: calc(var(--pad)/var(--ratio-sm));
-            max-width: 200px;
-            justify-content: center;
-
+            user-select: none;
         }
     }
 
@@ -855,9 +875,15 @@ nav {
     }
 
     & .contact-btn {
+        --border-and-shadow: var(--accent);
+        --text-color: var(--secondary);
+
+        background: var(--primary);
+        font-size: var(--text-lg);
+        font-weight: var(--wght-sb);
         display: block;
         max-width: 300px;
-        padding: var(--pad);
+        padding: calc(var(--gap)/var(--ratio-sm));
         margin: 0 auto var(--gap) auto;
     }
 
@@ -913,6 +939,13 @@ nav {
                         }
                     }
                 }
+
+                & #copy-email > button{
+                    --border-and-shadow: var(--accent);
+                    background: var(--primary);
+                    color: var(--secondary);
+                }
+
             }
         }
 

@@ -44,7 +44,7 @@ func compress(src *os.File, dst *os.File) {
 }
 
 func compressAndCopy(src, dst string) (err error) {
-	defer fmt.Printf("%s -> %s\n", src, dst)
+	defer fmt.Printf("%s --> %s\n", src, dst)
 
 	srcInfo, err := os.Stat(src)
 	check(err, fmt.Sprintf("problem stating src: %s\n", src))
