@@ -47,10 +47,10 @@
     --stroke-color-foreground: var(--secondary);
 
     /* text */
-    --text-color-primary: var(--secondary);
-    --text-color-primary-foreground: var(--secondary);
-    --text-color-secondary: var(--secondary);
-    --text-color-secondary-foreground: var(--secondary);
+    --btn-text-color-primary: var(--secondary);
+    --btn-text-color-primary-foreground: var(--secondary);
+    --btn-text-color-secondary: var(--secondary);
+    --btn-text-color-secondary-foreground: var(--secondary);
 
 }
 
@@ -174,36 +174,39 @@ footer ul a,
 
 /* ─── BUTTONS ───────────────────────────────────────────── */
 .btn {
-    --border-and-shadow: var(--primary);
-    --text-color: var(--primary);
+    --btn-border-and-shadow: var(--primary);
+    --btn-text-color: var(--primary);
+    --btn-letter-spacing: 2px;
+    --btn-font-weight: normal;
 
     all: unset;
     display: inline-flex;
-    color: var(--text-color);
-    letter-spacing: .2em;
+    color: var(--btn-text-color);
+    font-weight: var(--btn-font-weight);
+    letter-spacing: var(--btn-letter-spacing);
     text-decoration: none;
-    border: 1px solid var(--border-and-shadow);
+    border: 1px solid var(--btn-border-and-shadow);
     transition: color var(--anim-time) ease-in-out, box-shadow var(--anim-time) ease-in-out;
     cursor: pointer;
 
     &:hover {
-        box-shadow: 4px 4px 0 0 var(--border-and-shadow);
+        box-shadow: 4px 4px 0 0 var(--btn-border-and-shadow);
     }
 
     &:active {
-        box-shadow: 4px 4px 0 0 var(--border-and-shadow) inset;
+        box-shadow: 4px 4px 0 0 var(--btn-border-and-shadow) inset;
     }
 }
 
 .btn-f {
-    --border-and-shadow: var(--secondary);
-    --text-color: var(--secondary);
+    --btn-border-and-shadow: var(--secondary);
+    --btn-text-color: var(--secondary);
+    --font-weight: var(--wght-sb);
     padding: 14px 28px;
-    font-weight: var(--wght-sb);
 
     &:hover {
-        --border-and-shadow: var(--accent);
-        --text-color: var(--accent);
+        --btn-border-and-shadow: var(--accent);
+        --btn-text-color: var(--accent);
     }
 }
 
@@ -326,8 +329,8 @@ footer ul a,
 
         & .nav-btn {
             --color: var(--accent);
-            --text-color: var(--color);
-            --border-and-shadow: var(--color);
+            --btn-text-color: var(--color);
+            --btn-border-and-shadow: var(--color);
 
             & img {
                 filter: none;
@@ -340,8 +343,8 @@ footer ul a,
     }
 
     & .nav-btn {
-        --border-and-shadow: white;
-        --text-color: white;
+        --btn-border-and-shadow: white;
+        --btn-text-color: white;
 
         & img {
             filter: brightness(100) grayscale(100);
@@ -390,8 +393,8 @@ nav {
 
     & .nav-btn {
         --color: var(--accent);
-        --border-and-shadow: var(--color);
-        --text-color: var(--color);
+        --btn-border-and-shadow: var(--color);
+        --btn-text-color: var(--color);
         padding: 9px 18px;
 
         &:hover {
@@ -855,7 +858,9 @@ nav {
         font-weight: var(--wght-sb);
 
         & button {
-            color: var(--primary);
+            --btn-text-color: var(--primary);
+            --btn-letter-spacing: 1px;
+
             padding: calc(var(--gap)/var(--ratio-lg));
             justify-content: center;
 
@@ -875,14 +880,14 @@ nav {
     }
 
     & .contact-btn {
-        --border-and-shadow: var(--accent);
-        --text-color: var(--secondary);
+        --btn-border-and-shadow: var(--accent);
+        --btn-text-color: var(--secondary);
+        --btn-font-weight: var(--wght-sb);
 
         background: var(--primary);
         font-size: var(--text-lg);
-        font-weight: var(--wght-sb);
         display: block;
-        max-width: 300px;
+        max-width: 280px;
         padding: calc(var(--gap)/var(--ratio-sm));
         margin: 0 auto var(--gap) auto;
     }
@@ -941,7 +946,7 @@ nav {
                 }
 
                 & #copy-email > button{
-                    --border-and-shadow: var(--accent);
+                    --btn-border-and-shadow: var(--accent);
                     background: var(--primary);
                     color: var(--secondary);
                 }
@@ -1322,14 +1327,6 @@ footer {
 
         & #copy-email {
             flex-direction: column;
-
-            & span {
-                width: 100%;
-            }
-
-            & button {
-                width: 100%;
-            }
         }
 
         & .contact-cols {
@@ -1365,14 +1362,6 @@ footer {
     #hero {
         & .hero-inner {
             margin-top: 28rem;
-        }
-    }
-
-    #contact {
-        & #copy-email {
-            & span {
-                font-size: var(--text-sm);
-            }
         }
     }
 }
