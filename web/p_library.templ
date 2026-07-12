@@ -15,7 +15,7 @@ type Omap struct {
 }
 
 const dir = "out/media/lib"
-var includeFileTypes = [2]string{".mp4", ".jpg"}
+var includeFileTypes = []string{".mp4", ".webm", ".jpg", ".webp"}
 var vidMap = Omap{Keys: make([]string, 0, 4), Map: make(map[string][]string, 4)}
 
 func init() {
@@ -24,7 +24,7 @@ func init() {
 			return err
 		}
 
-		if d.IsDir() || !slices.Contains(includeFileTypes[:], filepath.Ext(path)) {
+		if d.IsDir() || !slices.Contains(includeFileTypes, filepath.Ext(path)) {
 			return nil
 		}
 
@@ -48,11 +48,22 @@ templ tab_content(cat_path string, isHidden bool) {
 	{{
 		id := filepath.Base(cat_path)
 	}}
+
 	<div role="tabpanel" id={"panel-"+id} aria-labelledby={"tab-"+id} hidden?={isHidden}>
 		<div class="lib-grid">
 			for _, v := range vidMap.Map[cat_path] {
 				<figure class="lib-item lib-item--placeholder">
-					<span>{v}</span>
+					switch filepath.Ext(v) {
+						case ".mp4", ".webm":
+							<video>
+								<source src={strings.Replace(cat_path, "out", ".", 1) + "/" + v} type="video/mp4" />
+							</video>
+						case ".jpg", ".webp" :
+							<!-- TODO: figure out a way to add alt-text to images -->
+							<img src={strings.Replace(cat_path, "out", ".", 1) + "/" + v} />
+						default:
+							<span>WOOPS!!</span>
+					}
 				</figure>
 			}
 		</div>
