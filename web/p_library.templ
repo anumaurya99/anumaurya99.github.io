@@ -75,6 +75,7 @@ templ Library() {
 		<main>
 			<section id="library" class="sec">
 				<div class="wrap">
+
 					<!-- Header -->
 					<div class="lib-hdr reveal">
 						<p class="sec-lbl">Our Work</p>
@@ -106,22 +107,6 @@ templ Library() {
 						<span class="lib-tab-indicator" aria-hidden="true"></span>
 					</div>
 
-					<!-- ───────────────────────────────────────────────────────────-->
-					<!-- Tab Panels                                                 -->
-					<!-- Each panel: drop your <img> / <video> tags into .lib-grid  -->
-					<!--                                                            -->
-					<!-- For images:                                                -->
-					<!--   <figure class="lib-item">                                -->
-					<!--     <img src="/static/projects/bts/filename.jpg"           -->
-					<!--          alt="Description" loading="lazy">                 -->
-					<!--   </figure>                                                -->
-					<!--                                                            -->
-					<!-- For videos:                                                -->
-					<!--   <figure class="lib-item">                                -->
-					<!--     <video src="/static/projects/bts/filename.mp4"         -->
-					<!--            loop muted playsinline></video>                 -->
-					<!--   </figure>                                                -->
-					<!-- ────────────────────────────────────────────────────────── -->
 					<div class="lib-panels">
 						for i, k := range vidMap.Keys {
 							{{
@@ -135,6 +120,7 @@ templ Library() {
 							@tab_content(k, isHidden)
 						}
 					</div>
+
 				</div><!-- /wrap -->
 			</section>
 		</main>
