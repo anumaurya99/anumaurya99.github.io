@@ -1,0 +1,63 @@
+
+build.go,107
+package main3,19
+func check(22,311
+func compress(28,380
+func compressAndCopy(46,741
+func main(76,1561
+
+web/c_copy_email.templ,44
+            function copyToClipboard(7,119
+
+web/p_index.templ,39
+var projects 9,89
+templ Index(16,427
+
+web/p_contact.templ,32
+var copyToClipboardHandle 3,13
+
+web/c_copy_email_templ.go,40
+package web4,72
+func CopyEmail(11,254
+
+web/l_base.templ,24
+templ base_layout(3,13
+
+web/p_index_templ.go,57
+package web4,72
+type Project 11,254
+func Index(24,668
+
+web/p_library.templ,117
+import 3,13
+const dir 17,150
+var vidMap 19,244
+func init(21,326
+templ tab_content(47,855
+templ Library(73,1593
+
+web/p_library_templ.go,102
+package web4,72
+type Omap 20,328
+func init(30,568
+func tab_content(56,1097
+func Library(179,6169
+
+web/p_contact_templ.go,38
+package web4,72
+func Contact(13,305
+
+web/l_base_templ.go,42
+package web4,72
+func base_layout(11,254
+
+init.go,77
+package main1,0
+func compressFileBrotliIfNotExist(22,229
+func init(53,788
+
+main.go,80
+package main1,0
+func check(13,124
+func generateFile(19,193
+func main(31,585
